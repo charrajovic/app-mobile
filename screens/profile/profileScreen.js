@@ -52,7 +52,7 @@ const ProfileScreen = ({ navigation }) => {
                 <View style={styles.sheetStyle}>
                     {profilePic()}
                     {editProfileButton()}
-                    {profileOptions()}
+                    
                 </View>
             </View>
             {logoutDialog()}

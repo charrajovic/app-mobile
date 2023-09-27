@@ -45,6 +45,7 @@ LogBox.ignoreAllLogs();
 
 const Stack = createStackNavigator();
 
+
 const Route = () => {
   return (
     <NavigationContainer>

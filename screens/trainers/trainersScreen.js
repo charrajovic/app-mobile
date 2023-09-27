@@ -59,7 +59,7 @@ const TrainersScreen = ({ navigation }) => {
         const renderItem = ({ item }) => (
             <TouchableOpacity
                 activeOpacity={0.99}
-                onPress={() => navigation.push('TrainerProfile')}
+                onPress={() => navigation.push('TrainerProfile', {item})}
                 style={{ ...styles.trainerInfoWrapStyle, flexDirection: isRtl ? 'row-reverse' : 'row', }}
             >
                 <View style={{ flex: 1, flexDirection: isRtl ? 'row-reverse' : 'row', alignItems: 'center', }}>

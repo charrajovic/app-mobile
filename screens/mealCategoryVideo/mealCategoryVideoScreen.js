@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, StatusBar, ScrollView, BackHandler, Dimensions, } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, StatusBar, ScrollView, BackHandler, Dimensions,Image } from 'react-native'
 import React, { useState, useCallback, useEffect } from 'react'
 import { Colors, Fonts, Sizes } from '../../constants/styles';
 import { MaterialIcons, MaterialCommunityIcons } from '@expo/vector-icons';
@@ -27,9 +27,12 @@ const ingredients = [
     "3 spoon peanut butter",
 ];
 
-const MealCategoryVideoScreen = ({ navigation }) => {
+const MealCategoryVideoScreen = ({ navigation, route }) => {
 
     const { t, i18n } = useTranslation();
+
+    const first = route.params.item;
+    console.log(first)
 
     const isRtl = i18n.dir() == 'rtl';
 
@@ -93,18 +96,17 @@ const MealCategoryVideoScreen = ({ navigation }) => {
         return (
             <View style={{ marginTop: Sizes.fixPadding, marginHorizontal: Sizes.fixPadding * 2.0, }}>
                 <Text style={{ ...Fonts.blackColor16SemiBold }}>
-                    {tr('recipe')}
+                    {"Description"}
                 </Text>
                 <View style={{ marginTop: Sizes.fixPadding }}>
                     {
-                        showRecipe.map((item, index) => (
                             <Text
-                                key={`${index}`}
+                                key={`${first['diet'].id}`}
                                 style={{ ...Fonts.grayColor14Medium, marginBottom: Sizes.fixPadding }}
                             >
-                                {item}
+                                {first['diet'].description}
                             </Text>
-                        ))
+                        
                     }
                     <Text
                         onPress={() => setShowMore(!showMore)}
@@ -127,7 +129,7 @@ const MealCategoryVideoScreen = ({ navigation }) => {
                     {tr('ingrediants')}
                 </Text>
                 {
-                    ingredients.map((item, index) => (
+                    first['diet'].ingredients.split(' ').map((item, index) => (
                         <View
                             key={`${index}`}
                             style={{ marginBottom: Sizes.fixPadding, flexDirection: isRtl ? 'row-reverse' : 'row' }}
@@ -152,11 +154,11 @@ const MealCategoryVideoScreen = ({ navigation }) => {
     function proteinFatAndCaloriesInfo() {
         return (
             <View style={{ ...styles.proteinFatAndCaloriesInfoWrapStyle, flexDirection: isRtl ? 'row-reverse' : 'row' }}>
-                {proteinFatCaloriesShort({ value: '500', type: tr('protein') })}
+                {proteinFatCaloriesShort({ value: first['diet'].protein, type: tr('protein') })}
                 <View style={{ backgroundColor: Colors.lightGrayColor, width: 1.0, }} />
-                {proteinFatCaloriesShort({ value: '250', type: tr('fat') })}
+                {proteinFatCaloriesShort({ value: first['diet'].fat, type: tr('fat') })}
                 <View style={{ backgroundColor: Colors.lightGrayColor, width: 1.0, }} />
-                {proteinFatCaloriesShort({ value: '1500', type: tr('calories') })}
+                {proteinFatCaloriesShort({ value: first['diet'].calories, type: tr('calories') })}
             </View>
         )
     }
@@ -191,10 +193,10 @@ const MealCategoryVideoScreen = ({ navigation }) => {
             <View style={{ margin: Sizes.fixPadding * 2.0, flexDirection: isRtl ? 'row-reverse' : 'row', justifyContent: 'space-between' }}>
                 <View>
                     <Text style={{ ...Fonts.blackColor18SemiBold }}>
-                        Breakfast
+                        {first['diet'].name}
                     </Text>
                     <Text style={{ ...Fonts.grayColor14SemiBold }}>
-                        Chocolate & Peanut Butter
+                    {first['diet'].recipe}
                     </Text>
                 </View>
                 <View style={{ flexDirection: isRtl ? 'row-reverse' : 'row' }}>
@@ -218,42 +220,21 @@ const MealCategoryVideoScreen = ({ navigation }) => {
     }
 
     function videoDisplay() {
+        const path = "https://api2v.xxtreme-fitness.com/"+first.diet.image;
         return (
-            <View>
-                <VideoPlayer
-                    videoProps={{
-                        shouldPlay: true,
-                        resizeMode: ResizeMode.STRETCH,
-                        source: require('../../assets/video/sampleVideo.mp4')
-                    }}
-                    slider={{ visible: true, }}
-                    style={{
-                        videoBackgroundColor: Colors.lightGrayColor,
-                        height: inFullscreen2 ? width : 230.0,
-                        width: inFullscreen2 ? height : width,
-                    }}
-                    icon={{
-                        pause: <MaterialIcons name='pause' color={Colors.whiteColor} size={40} style={{ marginBottom: 20.0, }} />,
-                        play: <MaterialIcons name='play-arrow' color={Colors.whiteColor} size={40} style={{ marginBottom: 20.0, }} />,
-                        replay: <MaterialIcons name="replay" color={Colors.whiteColor} size={40} style={{ marginBottom: 20.0, }} />,
-                    }}
-                    activityIndicator={{ color: Colors.whiteColor, size: 40.0, marginBottom: 20.0 }}
-                    fullscreen={{
-                        inFullscreen: inFullscreen2,
-                        enterFullscreen: async () => {
-                            setInFullsreen2(!inFullscreen2)
-                            await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE)
-                        },
-                        exitFullscreen: async () => {
-                            setInFullsreen2(!inFullscreen2)
-                            await ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT)
-                        },
-                    }}
-                />
-                {header()}
-            </View>
-        )
-    }
+          <View>
+            <Image
+              source={{uri: path}} // Replace with your image path
+              style={{
+                backgroundColor: Colors.lightGrayColor,
+                height: inFullscreen2 ? width : 230.0,
+                width: inFullscreen2 ? height : width,
+              }}
+            />
+            {header()}
+          </View>
+        );
+      }
 
     function header() {
         return (

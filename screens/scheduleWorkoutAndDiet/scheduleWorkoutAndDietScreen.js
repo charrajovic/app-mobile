@@ -122,7 +122,7 @@ const ScheduleWorkoutAndDietScreen = ({ navigation }) => {
             <View style={{ flex: 1, }}>
                 {header()}
                 {calendarInfo()}
-                {workoutAndDietTab()}
+                {/* {workoutAndDietTab()}
                 <FlatList
                     ListHeaderComponent={
                         <>
@@ -137,7 +137,7 @@ const ScheduleWorkoutAndDietScreen = ({ navigation }) => {
                         </>
                     }
                     showsVerticalScrollIndicator={false}
-                />
+                /> */}
             </View>
         </SafeAreaView>
     )

@@ -14,11 +14,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 const Tab = createBottomTabNavigator();
 let data= {}
-console.log('from here')
-console.log(AsyncStorage.getItem('token'))
 AsyncStorage.getItem('token').then(async (storedValue) => {
-    console.log('---------------')
-    console.log(storedValue)
     if (storedValue) {
         try {
             const response = await axios.get('https://xxtreme-fitness.com/api/auth/user', {
@@ -26,10 +22,7 @@ AsyncStorage.getItem('token').then(async (storedValue) => {
                 Authorization: `Bearer ${storedValue}`,
               },
             }).then((result) => {
-                // console.log(result.data)
                 data = result.data;
-                console.log('------------------------')
-                console.log(data)
             });
           } catch (error) {
             // Handle error
@@ -47,7 +40,6 @@ const BottomTabs = () => {
       async function getUserInfo() {
         try {
           const data = await fetchUserInfo();
-          console.log(userInfo)
         } catch (error) {
           // Handle error
         }
@@ -59,7 +51,6 @@ const BottomTabs = () => {
   
   async function fetchUserInfo() {
     try {
-        console.log('here')
       AsyncStorage.getItem('token').then(async (storedValue) => {
         if (storedValue) {
       const response = await axios.get('https://xxtreme-fitness.com/api/auth/user', {
@@ -67,7 +58,6 @@ const BottomTabs = () => {
           Authorization: `Bearer ${storedValue}`,
         },
       }).then(async (result) => { 
-        // console.log(result.data)
         const data = await result.data;
         setUserInfo(data);
       return data;

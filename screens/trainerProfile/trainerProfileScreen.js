@@ -47,9 +47,12 @@ const sessions = [
     },
 ];
 
-const TrainerProfileScreen = ({ navigation }) => {
+const TrainerProfileScreen = ({ navigation, route }) => {
 
     const { t, i18n } = useTranslation();
+
+    const itm = route.params.item;
+    console.log(itm)
 
     const isRtl = i18n.dir() == 'rtl';
 
@@ -69,8 +72,6 @@ const TrainerProfileScreen = ({ navigation }) => {
             return (
                 <View style={{ flex: 1, }}>
                     {trainerDetail()}
-                    {reviewInfo()}
-                    {upcomingSecssionInfo()}
                 </View>
             )
         }
@@ -101,7 +102,7 @@ const TrainerProfileScreen = ({ navigation }) => {
         const renderToolBar = () => {
             return (
                 <ImageBackground
-                    source={require('../../assets/images/trainers/trainer6.png')}
+                    source={itm.trainerImage}
                     style={{ width: '100%', height: height / 2.1, }}
                 >
                 </ImageBackground>
@@ -126,7 +127,6 @@ const TrainerProfileScreen = ({ navigation }) => {
                 {contactOptions()}
                 {expercienceInfo()}
                 {otherDetail()}
-                {feeAndBookButton()}
             </View>
         )
     }
@@ -239,8 +239,8 @@ const TrainerProfileScreen = ({ navigation }) => {
         return (
             <View style={{ marginHorizontal: Sizes.fixPadding * 2.0, }}>
                 {detailShort({ title: tr('work'), description: '09:00 AM to 06:00 PM' })}
-                {detailShort({ title: tr('speak'), description: 'English & Hindi' })}
-                {detailShort({ title: tr('qualification'), description: 'Diploma in personal tranning' })}
+                {detailShort({ title: tr('speak'), description: 'Arabic & french' })}
+                {detailShort({ title: tr('qualification'), description: 'Diplome in personal tranning' })}
             </View>
         )
     }
@@ -264,9 +264,8 @@ const TrainerProfileScreen = ({ navigation }) => {
     function expercienceInfo() {
         return (
             <View style={{ marginVertical: Sizes.fixPadding * 2.5, flexDirection: isRtl ? 'row-reverse' : 'row', marginHorizontal: Sizes.fixPadding + 5.0 }}>
-                {expercienceInfoShort({ count: 18, description: `Work\nexpriance`, bgColor: '#FAE3E1' })}
-                {expercienceInfoShort({ count: 600, description: `Job\nCompleted`, bgColor: '#E4E5E7' })}
-                {expercienceInfoShort({ count: 60, description: `Client\nServing`, bgColor: '#F5DADE' })}
+                {expercienceInfoShort({ count: itm.yearOfExperience, description: `Work\nexpriance`, bgColor: '#FAE3E1' })}
+                
             </View>
         )
     }
@@ -310,10 +309,10 @@ const TrainerProfileScreen = ({ navigation }) => {
         return (
             <View style={{ marginHorizontal: Sizes.fixPadding * 2.0, alignItems: 'center', }}>
                 <Text style={{ ...Fonts.blackColor22SemiBold }}>
-                    James Joys
+                    {itm.trainerName}
                 </Text>
                 <Text style={{ ...Fonts.grayColor14SemiBold }}>
-                    Yoga specialist
+                {itm.speciality}
                 </Text>
             </View>
         )

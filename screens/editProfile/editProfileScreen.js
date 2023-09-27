@@ -1,31 +1,76 @@
 import { StyleSheet, Text, View, SafeAreaView, StatusBar, ScrollView, TextInput, ImageBackground, Dimensions, TouchableOpacity } from 'react-native'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Colors, Fonts, Sizes } from '../../constants/styles';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Overlay } from 'react-native-elements';
 import { useTranslation } from 'react-i18next';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import axios from "axios"
 
 const { width } = Dimensions.get('window');
 
 const EditProfileScreen = ({ navigation }) => {
 
+    const [userInfo, setUserInfo] = useState(null);
+    const [state, setState] = useState({
+        name: userInfo?.name,
+        email: userInfo?.email,
+        lasyname: '',
+        fitnessGoal: '',
+        showBottomSheet: false,
+    })
+
+    const { name, lastname, email, fitnessGoal, showBottomSheet } = state;
+    useEffect(() => {
+        async function fetchData() {
+          try {
+            const data = await fetchUserInfo();
+            console.log(data)
+            setState({
+                name: data?.name,
+                email: data?.email,
+                lastname: data?.lastname,
+                fitnessGoal: data?.objectif
+            })
+          } catch (error) {
+            // Handle error
+          }
+        }
+      
+        fetchData(); // Call the async function immediately
+      
+        // You should not return anything from useEffect
+      }, []);
+      
+      async function fetchUserInfo() {
+        try {
+          const storedValue = await AsyncStorage.getItem('token');
+          if (storedValue) {
+            const response = await axios.get('https://xxtreme-fitness.com/api/auth/user', {
+              headers: {
+                Authorization: `Bearer ${storedValue}`,
+              },
+            });
+            const data = response.data;
+            console.log("----");
+            setUserInfo(data);
+            return data;
+          }
+        } catch (error) {
+          // Handle any errors that occurred during the async operations
+          console.error(error);
+          throw error; // Rethrow the error to be caught by the fetchData function
+        }
+      }
+      
     const { t, i18n } = useTranslation();
 
     function tr(key) {
         return t(`editProfileScreen:${key}`)
     }
-
+    console.log('yy')
     const isRtl = i18n.dir() == 'rtl';
-
-    const [state, setState] = useState({
-        name: 'Shriya',
-        email: 'Shriyapatel@gmail.com',
-        phoneNo: '+91 ( 1234567891)',
-        fitnessGoal: 'Weight loss ',
-        showBottomSheet: false,
-    })
-
-    const { name, phoneNo, email, fitnessGoal, showBottomSheet } = state;
+    
 
     const updateState = (data) => setState((state) => ({ ...state, ...data }));
 
@@ -37,8 +82,9 @@ const EditProfileScreen = ({ navigation }) => {
                 <ScrollView showsVerticalScrollIndicator={false}>
                     {profilePicWithChangeOption()}
                     {nameInfo()}
-                    {emailInfo()}
                     {phoneNumberInfo()}
+                    {emailInfo()}
+                    
                     {fitnessGoalInfo()}
                     {updateButton()}
                 </ScrollView>
@@ -122,11 +168,11 @@ const EditProfileScreen = ({ navigation }) => {
         return (
             <View style={{ marginHorizontal: Sizes.fixPadding * 2.0, marginBottom: Sizes.fixPadding * 2.0 }}>
                 <Text style={{ marginBottom: Sizes.fixPadding - 5.0, ...Fonts.grayColor16Regular }}>
-                    {tr('phoneNo')}
+                    {"lastname"}
                 </Text>
                 <TextInput
-                    value={phoneNo}
-                    onChangeText={(text) => updateState({ phoneNo: text })}
+                    value={lastname}
+                    onChangeText={(text) => updateState({ lastname: text })}
                     style={styles.textFieldStyle}
                     selectionColor={Colors.primaryColor}
                     keyboardType="phone-pad"

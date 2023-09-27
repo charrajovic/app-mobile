@@ -18,7 +18,6 @@ const WorkoutScreen = ({ navigation }) => {
         return t(`workoutScreen:${key}`)
     }
 
-    const [showAppointmentDialog, setShowAppointmentDialog] = useState(false);
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
@@ -30,43 +29,9 @@ const WorkoutScreen = ({ navigation }) => {
                     {workouts()}
                 </ScrollView>
             </View>
-            {appointmentDialog()}
         </SafeAreaView>
     )
 
-    function appointmentDialog() {
-        return (
-            <Overlay
-                isVisible={showAppointmentDialog}
-                onBackdropPress={() => setShowAppointmentDialog(false)}
-                overlayStyle={{ width: width - 40.0, borderRadius: Sizes.fixPadding - 2.0, padding: 0.0 }}
-            >
-                <View style={{ marginVertical: Sizes.fixPadding * 2.5, marginHorizontal: Sizes.fixPadding * 2.0, }}>
-                    <Text style={{ textAlign: 'center', ...Fonts.blackColor16Medium }}>
-                        {tr('appointmentTitle')}
-                    </Text>
-                    <TouchableOpacity
-                        activeOpacity={0.99}
-                        onPress={() => {
-                            setShowAppointmentDialog(false)
-                            navigation.push('Trainers')
-                        }}
-                        style={styles.buttonStyle}
-                    >
-                        <Text style={{ ...Fonts.whiteColor16Bold }}>
-                            {tr('bookAppintment')}
-                        </Text>
-                    </TouchableOpacity>
-                    <Text
-                        onPress={() => setShowAppointmentDialog(false)}
-                        style={{ textAlign: 'center', ...Fonts.grayColor16SemiBold }}
-                    >
-                        {tr('skip')}
-                    </Text>
-                </View>
-            </Overlay>
-        )
-    }
 
 
     function workouts() {
@@ -75,8 +40,8 @@ const WorkoutScreen = ({ navigation }) => {
                 <Text style={{ marginHorizontal: Sizes.fixPadding * 2.0, ...Fonts.blackColor16SemiBold }}>
                     Exercices
                 </Text>
-                <View style={{ marginTop: Sizes.fixPadding, flexDirection: isRtl ? 'row-reverse' : 'row', marginHorizontal: Sizes.fixPadding, height: '100%' }}>
-                    {workoutsShort({ icon: require('../../assets/images/icons/workout.png'), title: tr('userProgram'), onPress: () => { navigation.push('Videos') } })}
+                <View>
+                    {workoutsShort({ icon: require('../../assets/images/icons/workout.png'), title: "Exercices", onPress: () => { navigation.push('Videos') } })}
                     {workoutsShort({ icon: require('../../assets/images/icons/trainer.png'), title: tr('trainer'), onPress: () => { navigation.push('Trainers') } })}
                 </View>
             </View>
@@ -139,9 +104,10 @@ const styles = StyleSheet.create({
         flex: 1,
         marginHorizontal: Sizes.fixPadding,
         alignItems: 'center',
-        borderWidth: 3.0,
         borderBottomWidth: 0.0,
         borderColor: Colors.blackColor,
+        borderWidth: 1,
+        margin: 10
     },
     workoutThumbImageStyle: {
         width: width / 1.7,

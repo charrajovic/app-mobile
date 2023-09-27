@@ -12,7 +12,6 @@ const SigninScreen = ({ navigation }) => {
 
 
     AsyncStorage.getItem('token').then((storedValue) => {
-        console.log(storedValue)
         if (storedValue) {
             navigation.push('BottomTabs')
         }
@@ -153,25 +152,22 @@ const SigninScreen = ({ navigation }) => {
                         email: state.email,
                         password: state.password
                     }
-                    console.log(data)
                     setIsLoading(true)
                     await axios.post('https://xxtreme-fitness.com/api/auth/signin', data).then((result) => {
-                        console.log('token: '+result)
+                       
                         AsyncStorage.removeItem('token')
                         AsyncStorage.setItem('token', result.data.accessToken);    
-                    console.log(result.data.accessToken)
+                    
                     AsyncStorage.getItem('token').then((storedValue) => {
-                        console.log(storedValue)
+                        
                         if (storedValue) {
                             navigation.push('BottomTabs')
                         }
                       });
                     }).catch(e => {
-                        console.log('yeap')
                         console.log(e)
                     }) 
                     setIsLoading(false)
-                    console.log(state)
                     // navigation.push('Signup')
                 }}
                 style={styles.buttonStyle}

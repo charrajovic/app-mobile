@@ -282,13 +282,17 @@ const UserProgramScreen = ({ navigation, route }) => {
     }
 
     function videoDisplay() {
+        path = 'https://api2v.xxtreme-fitness.com/' + itm.video
+        console.log(path)
         return (
             <View>
                 <VideoPlayer
                     videoProps={{
                         shouldPlay: true,
                         resizeMode: ResizeMode.STRETCH,
-                        source: require('../../assets/images/ex/2.mp4')
+                        source: {
+                            uri: path ? path : ''
+                          }
                     }}
                     slider={{ visible: true, }}
                     style={{

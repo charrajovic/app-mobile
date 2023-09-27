@@ -122,7 +122,7 @@ const VideosScreen = ({ navigation }) => {
 
     function workoutInfo() {
         const renderItem = ({ item }) => {
-            const path = "http://api2v.xxtreme-fitness.com/"+item.exercice.image;
+            const path = "https://api2v.xxtreme-fitness.com/"+item.exercice.image;
             console.log(path)
             return (
                 <TouchableOpacity

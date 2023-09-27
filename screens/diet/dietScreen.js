@@ -13,11 +13,24 @@ const { width, height } = Dimensions.get('window');
 
 const DietScreen = ({ navigation }) => {
 
+    useEffect(() => {
+        // Add a navigation event listener
+        const unsubscribe = navigation.addListener('focus', () => {
+          // This code will run every time the screen comes into focus
+          console.log('Screen is in focus');
+          fetchUserInfo()
+        });
+        
+        // Clean up the event listener when the component unmounts
+        return unsubscribe;
+      }, [navigation]);
+
     const { t, i18n } = useTranslation();
 
     const [userInfo, setUserInfo] = useState(null);
 
     useEffect(() => {
+        console.log('tt')
       async function getUserInfo() {
         try {
           const data = await fetchUserInfo();
@@ -27,8 +40,8 @@ const DietScreen = ({ navigation }) => {
         }
       }
   
-      getUserInfo();
-    }, []);
+      fetchUserInfo();
+    }, [navigation]);
   
   
   async function fetchUserInfo() {
@@ -41,7 +54,7 @@ const DietScreen = ({ navigation }) => {
           Authorization: `Bearer ${storedValue}`,
         },
       }).then(async (result) => { 
-        console.log(result.data)
+        console.log('tt')
         const data = await result.data.userDiet;
         setUserInfo(data);
       return data;
@@ -101,22 +114,24 @@ console.log(userInfo)
     function todaysDietPlanInfo() {
         const renderItem = ({ item }) => {
             console.log(item)
-            const path = "http://api2v.xxtreme-fitness.com/"+item.diet.image;
+            const path = "https://api2v.xxtreme-fitness.com/"+item.diet.image;
+            console.log(path)
             return (
                 <TouchableOpacity
                     activeOpacity={0.99}
-                    onPress={() => navigation.push('MealCategoryVideo')}
-                    style={{ alignItems: 'center', marginRight: Sizes.fixPadding * 2.0 }}
+                    onPress={() => navigation.push('MealCategoryVideo', {item})}
+                    style={{ alignItems: 'center', marginRight: Sizes.fixPadding * 2.0, borderWidth: 1 }}
                 >
                     <Image
-                        source={path}
-                        style={styles.foodImageStyle}
-                    />
+                                        source={{ uri: path }}
+                                        style={styles.foodImageStyle}
+                                    />
                     <View style={styles.mealsCategoryWrapStyle}>
                         <Text style={{ ...Fonts.blackColor16SemiBold }}>
                             {item.diet.name}
                         </Text>
                         <Text style={{ ...Fonts.blackColor14Regular }}>
+                        {item.diet.recipe}
                         </Text>
                     </View>
                 </TouchableOpacity>
@@ -165,8 +180,8 @@ const styles = StyleSheet.create({
         borderRadius: Sizes.fixPadding - 2.0
     },
     foodImageStyle: {
-        width: width,
-        height: width,
+        width: width - 100,
+        height: width - 100,
         resizeMode: 'stretch',
         borderRadius: Sizes.fixPadding - 2.0
     },

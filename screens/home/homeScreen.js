@@ -101,6 +101,7 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
     const [showAppointmentDialog, setShowAppointmentDialog] = useState(false)
 
     const [userInfo, setUserInfo] = useState(null);
+    const [dietsInfo, setDietsInfo] = useState(null);
 
     useEffect(() => {
       async function getUserInfo() {
@@ -137,6 +138,26 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
       console.error('Error fetching user information:', error);
       throw error;
     }
+    try {
+        AsyncStorage.getItem('token').then(async (storedValue) => {
+            if (storedValue) {
+          const response = await axios.get('https://xxtreme-fitness.com/api/auth/exercices', {
+            headers: {
+              Authorization: `Bearer ${storedValue}`,
+            },
+          }).then(async (result) => { 
+            console.log(result.data)
+            const data = await result.data.userDiet;
+            setDietsInfo(data);
+          return data;
+          });
+          
+            }})
+        } catch (error) {
+          console.error('Error fetching user information:', error);
+          throw error;
+        }
+    
 }
     
 
@@ -316,7 +337,7 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
             return (
                 <TouchableOpacity
                     activeOpacity={0.99}
-                    onPress={() => { navigation.push('TrainerProfile') }}
+                    onPress={() => { navigation.push('TrainerProfile', {item}) }}
                     style={styles.trainerInfoWrapStyle}
                 >
                     <ImageBackground
@@ -364,23 +385,25 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
 
     function todaysPlan() {
         const renderItem = ({ item }) => {
+            console.log(item.diet)
+            const path = "https://api2v.xxtreme-fitness.com/"+item.diet.image;
             return (
                 <TouchableOpacity
                     activeOpacity={0.99}
-                    onPress={() => navigation.push('MealCategoryVideo')}
+                    onPress={() => navigation.push('MealCategoryVideo', {item})}
                     style={{ alignItems: 'center', marginRight: Sizes.fixPadding * 2.0 }}
                 >
                     
                     <Image
-                        source={item.foodImage}
+                        source={{ uri: path }}
                         style={styles.foodImageStyle}
                     />
                     <View style={styles.mealsCategoryWrapStyle}>
                         <Text style={{ ...Fonts.blackColor16SemiBold }}>
-                            {item.mealsCategory}
+                        {item.diet.name}
                         </Text>
                         <Text style={{ ...Fonts.blackColor14Regular }}>
-                            {item.eatTime}
+                        {item.diet.recipe}
                         </Text>
                     </View>
                 </TouchableOpacity>
@@ -393,7 +416,7 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
                 </Text>
                 <View style={{ marginTop: Sizes.fixPadding }}>
                     <FlatList
-                        data={todaysPlans}
+                        data={dietsInfo ? dietsInfo : ''}
                         keyExtractor={(item) => `${item.id}`}
                         renderItem={renderItem}
                         horizontal
@@ -481,7 +504,7 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
                     />
                     <View style={{ flex: 1, marginHorizontal: Sizes.fixPadding + 5.0 }}>
                         <Text style={{ ...Fonts.blackColor16SemiBold }}>
-                            Hello {userInfo ? userInfo.name : ''} {userInfo ? userInfo.lastname : ''}
+                            Bonjour {userInfo ? userInfo.name : ''} {userInfo ? userInfo.lastname : ''}
                         </Text>
                         <Text style={{ ...Fonts.blackColor14Regular }}>
                             {tr('userWelcome')}
