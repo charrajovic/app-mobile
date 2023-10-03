@@ -45,7 +45,7 @@ const ChooseTimeScreen = ({ navigation }) => {
     const { selectedEveningTime, selectedMorningTime, defaultDate, defaultMonth, defaultYear, showFullCalender, selectedIndex } = state;
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {header()}
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingBottom: Sizes.fixPadding * 2.0 }}>
@@ -98,8 +98,8 @@ const ChooseTimeScreen = ({ navigation }) => {
                                 onPress={() => updateState({ selectedEveningTime: item })}
                                 style={{
                                     ...styles.timeWrapStyle,
-                                    borderColor: selectedEveningTime == item ? Colors.primaryColor : Colors.grayColor,
-                                    backgroundColor: selectedEveningTime == item ? Colors.primaryColor : Colors.whiteColor
+                                    borderColor: selectedEveningTime == item ? Colors.lightPrimaryColor : Colors.grayColor,
+                                    backgroundColor: selectedEveningTime == item ? Colors.lightPrimaryColor : Colors.whiteColor
                                 }}
                             >
                                 <Text style={selectedEveningTime == item ? { ...Fonts.whiteColor16Medium } : { ...Fonts.blackColor16Medium }}>
@@ -128,8 +128,8 @@ const ChooseTimeScreen = ({ navigation }) => {
                                 onPress={() => updateState({ selectedMorningTime: item })}
                                 style={{
                                     ...styles.timeWrapStyle,
-                                    borderColor: selectedMorningTime == item ? Colors.primaryColor : Colors.grayColor,
-                                    backgroundColor: selectedMorningTime == item ? Colors.primaryColor : Colors.whiteColor
+                                    borderColor: selectedMorningTime == item ? Colors.lightPrimaryColor : Colors.grayColor,
+                                    backgroundColor: selectedMorningTime == item ? Colors.lightPrimaryColor : Colors.whiteColor
                                 }}
                             >
                                 <Text style={selectedMorningTime == item ? { ...Fonts.whiteColor16Medium } : { ...Fonts.blackColor16Medium }}>
@@ -220,7 +220,7 @@ const ChooseTimeScreen = ({ navigation }) => {
                 }}
                 style={{
                     ...styles.dayWrapStyle,
-                    backgroundColor: date.day == defaultDate ? Colors.primaryColor : Colors.whiteColor
+                    backgroundColor: date.day == defaultDate ? Colors.lightPrimaryColor : Colors.whiteColor
                 }}
             >
                 <Text style={date.day == defaultDate ? { ...Fonts.whiteColor18SemiBold } : { ...Fonts.grayColor18SemiBold }}>
@@ -320,7 +320,7 @@ const styles = StyleSheet.create({
         flexWrap: 'wrap'
     },
     buttonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: Sizes.fixPadding,

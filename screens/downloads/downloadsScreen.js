@@ -59,7 +59,7 @@ const DownloadsScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {header()}
                 {

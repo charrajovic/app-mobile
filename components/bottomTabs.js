@@ -17,7 +17,7 @@ let data= {}
 AsyncStorage.getItem('token').then(async (storedValue) => {
     if (storedValue) {
         try {
-            const response = await axios.get('https://xxtreme-fitness.com/api/auth/user', {
+            const response = await axios.get('https://api2v.xxtreme-fitness.com/api/auth/user', {
               headers: {
                 Authorization: `Bearer ${storedValue}`,
               },
@@ -53,7 +53,7 @@ const BottomTabs = () => {
     try {
       AsyncStorage.getItem('token').then(async (storedValue) => {
         if (storedValue) {
-      const response = await axios.get('https://xxtreme-fitness.com/api/auth/user', {
+      const response = await axios.get('https://api2v.xxtreme-fitness.com/api/auth/user', {
         headers: {
           Authorization: `Bearer ${storedValue}`,
         },
@@ -101,7 +101,7 @@ const BottomTabs = () => {
                 <Tab.Navigator
                     screenOptions={{
                         headerShown: false,
-                        tabBarActiveTintColor: Colors.primaryColor,
+                        tabBarActiveTintColor: Colors.yellowColor,
                         tabBarInactiveTintColor: Colors.grayColor,
                         tabBarLabelStyle: { fontSize: 14.0, fontFamily: 'Montserrat_SemiBold', },
                         tabBarStyle: { height: 60.0 },
@@ -133,7 +133,7 @@ const BottomTabs = () => {
                 <Tab.Navigator
                     screenOptions={{
                         headerShown: false,
-                        tabBarActiveTintColor: Colors.primaryColor,
+                        tabBarActiveTintColor: Colors.yellowColor,
                         tabBarInactiveTintColor: Colors.grayColor,
                         tabBarLabelStyle: { fontSize: 14.0, fontFamily: 'Montserrat_SemiBold', },
                         tabBarStyle: { height: 60.0 },
@@ -154,13 +154,6 @@ const BottomTabs = () => {
                             tabBarIcon: ({ color }) => <MaterialIcons name="fitness-center" size={24} color={color} style={{
                                 transform: [{ rotate: '-40deg' }]
                             }} />
-                        }}
-                    />
-                    <Tab.Screen
-                        name={tr('insight')}
-                        component={InsightScreen}
-                        options={{
-                            tabBarIcon: ({ color }) => <MaterialIcons name="collections-bookmark" size={24} color={color} />
                         }}
                     />
                     <Tab.Screen

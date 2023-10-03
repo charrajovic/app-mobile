@@ -29,7 +29,7 @@ const SelectPaymentMethodScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {header()}
                 <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingTop: Sizes.fixPadding - 8.0 }}>
@@ -79,7 +79,7 @@ const SelectPaymentMethodScreen = ({ navigation }) => {
                     value={cvv}
                     onChangeText={text => updateState({ cvv: text })}
                     style={styles.textFieldStyle}
-                    activeUnderlineColor={Colors.primaryColor}
+                    activeUnderlineColor={Colors.lightPrimaryColor}
                     underlineColor={Colors.grayColor}
                     keyboardType="numeric"
                 />
@@ -101,7 +101,7 @@ const SelectPaymentMethodScreen = ({ navigation }) => {
                     value={expireDate}
                     onChangeText={text => updateState({ expireDate: text })}
                     style={styles.textFieldStyle}
-                    activeUnderlineColor={Colors.primaryColor}
+                    activeUnderlineColor={Colors.lightPrimaryColor}
                     underlineColor={Colors.grayColor}
                     keyboardType="numeric"
                 />
@@ -119,7 +119,7 @@ const SelectPaymentMethodScreen = ({ navigation }) => {
                     value={cardNumber}
                     onChangeText={text => updateState({ cardNumber: text })}
                     style={styles.textFieldStyle}
-                    activeUnderlineColor={Colors.primaryColor}
+                    activeUnderlineColor={Colors.lightPrimaryColor}
                     underlineColor={Colors.grayColor}
                     keyboardType="numeric"
                 />
@@ -137,7 +137,7 @@ const SelectPaymentMethodScreen = ({ navigation }) => {
                     value={cardHolderName}
                     onChangeText={text => updateState({ cardHolderName: text })}
                     style={styles.textFieldStyle}
-                    activeUnderlineColor={Colors.primaryColor}
+                    activeUnderlineColor={Colors.lightPrimaryColor}
                     underlineColor={Colors.grayColor}
                 />
             </View>
@@ -169,7 +169,7 @@ const SelectPaymentMethodScreen = ({ navigation }) => {
                     style={{ height: 40.0, resizeMode: 'contain' }}
                 />
                 <View style={styles.paymentMethodDividerStyle} />
-                <View style={{ ...styles.checkBoxStyle, borderColor: index == selectedPaymentIndex ? Colors.primaryColor : Colors.grayColor, }}>
+                <View style={{ ...styles.checkBoxStyle, borderColor: index == selectedPaymentIndex ? Colors.lightPrimaryColor : Colors.grayColor, }}>
                     {
                         index == selectedPaymentIndex
                             ?
@@ -220,7 +220,7 @@ const styles = StyleSheet.create({
         width: 10.0,
         height: 10.0,
         borderRadius: 5.0,
-        backgroundColor: Colors.primaryColor
+        backgroundColor: Colors.lightPrimaryColor
     },
     paymentMethodsWrapStyle: {
         backgroundColor: Colors.whiteColor,
@@ -238,7 +238,7 @@ const styles = StyleSheet.create({
         height: 30.0,
     },
     buttonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: Sizes.fixPadding,

@@ -18,7 +18,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {backArrow()}
                 <ScrollView showsVerticalScrollIndicator={false}>
@@ -53,7 +53,7 @@ const ForgotPasswordScreen = ({ navigation }) => {
                     onChangeText={(text) => setEmail(text)}
                     placeholder={tr('email')}
                     style={{ ...Fonts.blackColor14Regular }}
-                    selectionColor={Colors.primaryColor}
+                    selectionColor={Colors.lightPrimaryColor}
                     keyboardType="email-address"
                     placeholderTextColor={'#8D8D8D'}
                 />
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
         marginTop: Sizes.fixPadding * 4.0,
     },
     buttonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: Sizes.fixPadding,

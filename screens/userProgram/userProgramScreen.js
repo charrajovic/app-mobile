@@ -63,7 +63,7 @@ const UserProgramScreen = ({ navigation, route }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar hidden={inFullscreen2 ? true : false} translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar hidden={inFullscreen2 ? true : false} translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {videoDisplay()}
                 <ScrollView showsVerticalScrollIndicator={false}>
@@ -204,7 +204,7 @@ const UserProgramScreen = ({ navigation, route }) => {
                     {tr('netDuration')}
                 </Text>
                 <View style={{ marginTop: Sizes.fixPadding - 5.0, flexDirection: isRtl ? 'row-reverse' : 'row', alignItems: 'center' }}>
-                    <MaterialCommunityIcons name="clock-time-four" size={18} color={Colors.primaryColor} />
+                    <MaterialCommunityIcons name="clock-time-four" size={18} color={Colors.lightPrimaryColor} />
                     <Text numberOfLines={1}
                         style={{
                             marginLeft: isRtl ? 0.0 : Sizes.fixPadding - 5.0,
@@ -226,7 +226,7 @@ const UserProgramScreen = ({ navigation, route }) => {
                     {tr('equpiment')}
                 </Text>
                 <View style={{ marginTop: Sizes.fixPadding - 5.0, flexDirection: isRtl ? 'row-reverse' : 'row', alignItems: 'center' }}>
-                    <MaterialIcons name="fitness-center" size={18} color={Colors.primaryColor} />
+                    <MaterialIcons name="fitness-center" size={18} color={Colors.lightPrimaryColor} />
                     <Text numberOfLines={1}
                         style={{
                             marginLeft: isRtl ? 0.0 : Sizes.fixPadding - 5.0,
@@ -268,14 +268,14 @@ const UserProgramScreen = ({ navigation, route }) => {
                     <MaterialIcons
                         name={inFavorite ? "favorite" : "favorite-outline"}
                         size={24}
-                        color={Colors.primaryColor}
+                        color={Colors.lightPrimaryColor}
                         style={{ marginRight: isRtl ? 0.0 : Sizes.fixPadding + 5.0, marginLeft: isRtl ? Sizes.fixPadding + 5.0 : 0.0 }}
                         onPress={() => {
                             setShowSnackBar(true)
                             setInFavorite(!inFavorite)
                         }}
                     />
-                    <Octicons name="download" size={25} color={Colors.primaryColor} />
+                    <Octicons name="download" size={25} color={Colors.lightPrimaryColor} />
                 </View>
             </View>
         )

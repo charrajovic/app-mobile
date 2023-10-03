@@ -19,7 +19,7 @@ const LanguagesScreen = ({ navigation, route }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {header()}
                 {languages()}
@@ -60,8 +60,8 @@ const LanguagesScreen = ({ navigation, route }) => {
             >
                 <View style={{
                     ...styles.radioButtonStyle,
-                    borderColor: selectedLanguage == lang ? Colors.primaryColor : Colors.whiteColor,
-                    backgroundColor: selectedLanguage == lang ? Colors.primaryColor : Colors.grayColor,
+                    borderColor: selectedLanguage == lang ? Colors.lightPrimaryColor : Colors.whiteColor,
+                    backgroundColor: selectedLanguage == lang ? Colors.lightPrimaryColor : Colors.grayColor,
                 }}>
                     <View style={{ backgroundColor: Colors.whiteColor, width: 8.0, height: 8.0, borderRadius: 4.0 }} />
                 </View>

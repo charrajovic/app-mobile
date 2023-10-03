@@ -20,7 +20,7 @@ const SubscriptionDetailScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {header()}
                 <ScrollView
@@ -203,7 +203,7 @@ const SubscriptionDetailScreen = ({ navigation }) => {
                 onPress={() => setSubscriptionTypeIndex(index)}
                 style={{
                     ...styles.subscriptionTypesWrapStyle,
-                    backgroundColor: index == subscriptionTypeIndex ? Colors.primaryColor : Colors.lightGrayColor,
+                    backgroundColor: index == subscriptionTypeIndex ? Colors.lightPrimaryColor : Colors.lightGrayColor,
                     marginHorizontal: index == 2 ? Sizes.fixPadding + 5.0 : 0.0
                 }}
             >
@@ -275,7 +275,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     buttonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: Sizes.fixPadding,
@@ -283,7 +283,7 @@ const styles = StyleSheet.create({
         marginTop: Sizes.fixPadding * 3.0
     },
     detailWrapStyle: {
-        borderColor: Colors.primaryColor,
+        borderColor: Colors.lightPrimaryColor,
         borderWidth: 1.0,
         borderRadius: Sizes.fixPadding - 2.0,
         padding: Sizes.fixPadding * 2.0,

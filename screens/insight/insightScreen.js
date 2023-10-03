@@ -75,9 +75,9 @@ const InsightScreen = () => {
     const chartConfig = {
         backgroundGradientFrom: Colors.whiteColor,
         backgroundGradientTo: Colors.whiteColor,
-        fillShadowGradientFrom: Colors.primaryColor,
+        fillShadowGradientFrom: Colors.lightPrimaryColor,
         fillShadowGradientFromOpacity: 1,
-        fillShadowGradientTo: Colors.primaryColor,
+        fillShadowGradientTo: Colors.lightPrimaryColor,
         fillShadowGradientToOpacity: 1,
         color: (opacity = 1) => `rgba(0, 86, 98, ${opacity})`,
         labelColor: (opacity = 1) => `rgba(183, 183, 183, ${opacity})`,
@@ -110,7 +110,7 @@ const InsightScreen = () => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1 }}>
                 {header()}
             </View>
@@ -218,7 +218,7 @@ const InsightScreen = () => {
                     updateState({ selectedWaterChartIndex: index })
                 }}
                 style={{
-                    backgroundColor: index == selectedWaterChartIndex ? Colors.primaryColor : Colors.whiteColor,
+                    backgroundColor: index == selectedWaterChartIndex ? Colors.lightPrimaryColor : Colors.whiteColor,
                     ...styles.chartDataCategoryWrapStyle,
                 }}
             >
@@ -271,7 +271,7 @@ const InsightScreen = () => {
                             <TouchableOpacity
                                 activeOpacity={0.99}
                                 onPress={() => { userDrunk < targetDrunk ? updateState({ userDrunk: userDrunk + 100 }) : null }}
-                                style={{ ...styles.addAndRemoveButtonWrapStyle, backgroundColor: Colors.primaryColor, }}
+                                style={{ ...styles.addAndRemoveButtonWrapStyle, backgroundColor: Colors.lightPrimaryColor, }}
                             >
                                 <MaterialIcons name="add" size={18} color={Colors.whiteColor} />
                             </TouchableOpacity>
@@ -343,7 +343,7 @@ const InsightScreen = () => {
                 activeOpacity={0.99}
                 onPress={() => { updateState({ selecteddietChartIndex: index }) }}
                 style={{
-                    backgroundColor: index == selecteddietChartIndex ? Colors.primaryColor : Colors.whiteColor,
+                    backgroundColor: index == selecteddietChartIndex ? Colors.lightPrimaryColor : Colors.whiteColor,
                     ...styles.chartDataCategoryWrapStyle,
                 }}
             >
@@ -451,7 +451,7 @@ const InsightScreen = () => {
                 activeOpacity={0.99}
                 onPress={() => { updateState({ selectedSleepChartIndex: index }) }}
                 style={{
-                    backgroundColor: index == selectedSleepChartIndex ? Colors.primaryColor : Colors.whiteColor,
+                    backgroundColor: index == selectedSleepChartIndex ? Colors.lightPrimaryColor : Colors.whiteColor,
                     ...styles.chartDataCategoryWrapStyle,
                 }}
             >
@@ -592,7 +592,7 @@ const InsightScreen = () => {
                 activeOpacity={0.99}
                 onPress={() => { updateState({ selectedCaloriesChartIndex: index }) }}
                 style={{
-                    backgroundColor: index == selectedCaloriesChartIndex ? Colors.primaryColor : Colors.whiteColor,
+                    backgroundColor: index == selectedCaloriesChartIndex ? Colors.lightPrimaryColor : Colors.whiteColor,
                     ...styles.chartDataCategoryWrapStyle,
                 }}
             >
@@ -686,7 +686,7 @@ const InsightScreen = () => {
                 <Text numberOfLines={1} style={{ marginBottom: Sizes.fixPadding, ...selectedTabIndex == index ? { ...Fonts.primaryColor16SemiBold } : { ...Fonts.grayColor16SemiBold } }}>
                     {tabTitle}
                 </Text>
-                <View style={{ width: '100%', backgroundColor: selectedTabIndex == index ? Colors.primaryColor : Colors.lightGrayColor, height: 2.0 }} />
+                <View style={{ width: '100%', backgroundColor: selectedTabIndex == index ? Colors.lightPrimaryColor : Colors.lightGrayColor, height: 2.0 }} />
             </TouchableOpacity>
         )
     }
@@ -700,7 +700,7 @@ const InsightScreen = () => {
                         size={width / 2.8}
                         unfilledColor={Colors.lightGrayColor}
                         borderWidth={0.0}
-                        color={Colors.primaryColor}
+                        color={Colors.lightPrimaryColor}
                         thickness={8}
                     />
                     <Image
@@ -808,7 +808,7 @@ const styles = StyleSheet.create({
         borderBottomLeftRadius: Sizes.fixPadding - 2.0,
         borderTopLeftRadius: Sizes.fixPadding - 2.0,
         width: 8.0,
-        backgroundColor: Colors.primaryColor
+        backgroundColor: Colors.lightPrimaryColor
     },
     woakupAndSleepDrunkAndTargetDetailWrapStyle: {
         marginVertical: Sizes.fixPadding * 2.0,
@@ -837,7 +837,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     addDrinkButtonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         borderRadius: Sizes.fixPadding - 2.0,
         alignItems: 'center',
         justifyContent: 'center',

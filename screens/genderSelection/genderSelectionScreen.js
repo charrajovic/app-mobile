@@ -23,7 +23,7 @@ const GenderSelectionScreen = ({ navigation, route }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {header()}
                 <ScrollView
@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
         marginVertical: Sizes.fixPadding + 5.0,
     },
     buttonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: Sizes.fixPadding,

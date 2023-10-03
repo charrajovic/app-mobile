@@ -23,7 +23,7 @@ const WorkoutCategoryDetailScreen = ({ navigation, route }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {header()}
                 {workoutsInfo()}
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
         width: 18.0,
         height: 18.0,
         borderRadius: 9.0,
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         right: 5.0,
@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end'
     },
     buttonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: Sizes.fixPadding,

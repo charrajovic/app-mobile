@@ -33,7 +33,7 @@ const SignupScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {backArrow()}
                 <ScrollView showsVerticalScrollIndicator={false}>
@@ -90,19 +90,56 @@ const SignupScreen = ({ navigation }) => {
         )
     }
 
+    function isPasswordValid(password) {
+        // Define regular expressions for lowercase, uppercase, and numbers
+        const lowercaseRegex = /[a-z]/;
+        const uppercaseRegex = /[A-Z]/;
+        const numberRegex = /[0-9]/;
+      
+        // Check if the password meets all criteria
+        const containsLowercase = lowercaseRegex.test(password);
+        const containsUppercase = uppercaseRegex.test(password);
+        const containsNumber = numberRegex.test(password);
+      
+        // Return true if all criteria are met
+        return containsLowercase && containsUppercase && containsNumber;
+      }
+
+      function checkEmail(email) {
+        const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+  const isValidEmail = emailRegex.test(email);
+  return isValidEmail
+      }
+
     function signupButton() {
-        return (
-            <TouchableOpacity
-                activeOpacity={0.99}
-                // onPress={() => ttala3()}
-                onPress={() => navigation.push('GenderSelection',{state}, { from: 'signup' })}
-                style={styles.buttonStyle}
-            >
-                <Text style={{ ...Fonts.whiteColor16Bold }}>
-                    {tr('signup')}
-                </Text>
-            </TouchableOpacity>
-        )
+        if(isPasswordValid(state.password) && state.password.length > 7 && checkEmail(state.email) && state.phoneNumber.length > 4 && state.fullName.length > 4)
+        {
+            return (
+                <TouchableOpacity
+                    activeOpacity={0.99}
+                    // onPress={() => ttala3()}
+                    onPress={() => navigation.push('GenderSelection',{state}, { from: 'signup' })}
+                    style={styles.buttonStyle}
+                >
+                    <Text style={{ ...Fonts.whiteColor16Bold }}>
+                        {tr('signup')}
+                    </Text>
+                </TouchableOpacity>
+            )
+        }
+        else {
+            return (
+                <TouchableOpacity
+                    activeOpacity={0.3}
+                    style={{...styles.buttonStyle, opacity: 0.3}}
+                >
+                    <Text style={{ ...Fonts.whiteColor16Bold }}>
+                        {tr('signup')}
+                    </Text>
+                </TouchableOpacity>
+            )
+        }
+        
     }
 
     function passwordTextField() {
@@ -117,7 +154,7 @@ const SignupScreen = ({ navigation }) => {
                     onChangeText={(text) => updateState({ password: text })}
                     placeholder={tr('password')}
                     style={{ ...Fonts.blackColor14Regular, flex: 1, marginLeft: isRtl ? Sizes.fixPadding : 0.0 }}
-                    selectionColor={Colors.primaryColor}
+                    selectionColor={Colors.lightPrimaryColor}
                     placeholderTextColor={'#8D8D8D'}
                     secureTextEntry={!showPassword}
                 />
@@ -139,7 +176,7 @@ const SignupScreen = ({ navigation }) => {
                     onChangeText={(text) => updateState({ phoneNumber: text })}
                     placeholder={tr('phone')}
                     style={{ ...Fonts.blackColor14Regular }}
-                    selectionColor={Colors.primaryColor}
+                    selectionColor={Colors.lightPrimaryColor}
                     placeholderTextColor={'#8D8D8D'}
                 />
             </View>
@@ -154,7 +191,7 @@ const SignupScreen = ({ navigation }) => {
                     onChangeText={(text) => updateState({ email: text })}
                     placeholder={tr('email')}
                     style={{ ...Fonts.blackColor14Regular }}
-                    selectionColor={Colors.primaryColor}
+                    selectionColor={Colors.lightPrimaryColor}
                     keyboardType="email-address"
                     placeholderTextColor={'#8D8D8D'}
                 />
@@ -170,7 +207,7 @@ const SignupScreen = ({ navigation }) => {
                     onChangeText={(text) => updateState({ fullName: text })}
                     placeholder={tr('name')}
                     style={{ ...Fonts.blackColor14Regular }}
-                    selectionColor={Colors.primaryColor}
+                    selectionColor={Colors.lightPrimaryColor}
                     placeholderTextColor={'#8D8D8D'}
                 />
             </View>
@@ -216,7 +253,7 @@ const styles = StyleSheet.create({
         marginBottom: Sizes.fixPadding * 2.0,
     },
     buttonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: Sizes.fixPadding,

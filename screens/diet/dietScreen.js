@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, SafeAreaView, StatusBar, Image, TouchableOpacity, Dimensions, FlatList, ImageBackground } from 'react-native'
+import { StyleSheet, Text, View, SafeAreaView, StatusBar, Image, TouchableOpacity, Dimensions, FlatList, ImageBackground, ActivityIndicator } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { Fonts, Colors, Sizes } from '../../constants/styles';
 import { MaterialIcons } from '@expo/vector-icons';
@@ -6,6 +6,7 @@ import { Snackbar } from 'react-native-paper';
 import { useTranslation } from 'react-i18next';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
+import { Overlay } from 'react-native-elements';
 
 const { width, height } = Dimensions.get('window');
 
@@ -28,6 +29,7 @@ const DietScreen = ({ navigation }) => {
     const { t, i18n } = useTranslation();
 
     const [userInfo, setUserInfo] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         console.log('tt')
@@ -42,14 +44,31 @@ const DietScreen = ({ navigation }) => {
   
       fetchUserInfo();
     }, [navigation]);
+
+    function loadingDialog() {
+        return (
+
+            
+            <Overlay
+                isVisible={isLoading}
+                overlayStyle={styles.dialogStyle}
+            >
+                <ActivityIndicator size={35} color={Colors.lightPrimaryColor} style={{ alignSelf: 'center' }} />
+                <Text style={{ marginTop: Sizes.fixPadding, textAlign: 'center', ...Fonts.blackColor16Bold }}>
+                    {tr('wait')}
+                </Text>
+            </Overlay>
+        )
+    }
   
   
   async function fetchUserInfo() {
+    setIsLoading(true)
     try {
         console.log('here')
-      AsyncStorage.getItem('token').then(async (storedValue) => {
+      await AsyncStorage.getItem('token').then(async (storedValue) => {
         if (storedValue) {
-      const response = await axios.get('https://xxtreme-fitness.com/api/auth/exercices', {
+      const response = await axios.get('https://api2v.xxtreme-fitness.com/api/auth/exercices', {
         headers: {
           Authorization: `Bearer ${storedValue}`,
         },
@@ -57,7 +76,11 @@ const DietScreen = ({ navigation }) => {
         console.log('tt')
         const data = await result.data.userDiet;
         setUserInfo(data);
+        setIsLoading(false)
       return data;
+      
+      }).catch((e) => {
+        setIsLoading(false)
       });
       
         }})
@@ -65,6 +88,7 @@ const DietScreen = ({ navigation }) => {
       console.error('Error fetching user information:', error);
       throw error;
     }
+    setIsLoading(false)
 }
 
 console.log(userInfo)
@@ -79,7 +103,7 @@ console.log(userInfo)
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1 }}>
                 {header()}
                 <FlatList
@@ -93,6 +117,7 @@ console.log(userInfo)
                 />
             </View>
             {snackBar()}
+            {loadingDialog()}
         </SafeAreaView>
     )
 
@@ -184,6 +209,15 @@ const styles = StyleSheet.create({
         height: width - 100,
         resizeMode: 'stretch',
         borderRadius: Sizes.fixPadding - 2.0
+    },
+    dialogStyle: {
+        width: '80%',
+        backgroundColor: Colors.whiteColor,
+        borderRadius: Sizes.fixPadding,
+        paddingHorizontal: Sizes.fixPadding * 2.0,
+        paddingBottom: Sizes.fixPadding * 3.5,
+        paddingTop: Sizes.fixPadding * 3.0,
+        elevation: 3.0,
     },
     dietCategoriesInfoWrapStyle: {
         flex: 1,

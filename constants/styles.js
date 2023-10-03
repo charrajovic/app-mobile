@@ -13,55 +13,55 @@ export const Colors = {
 export const Fonts = {
 
     primaryColor14Regular: {
-        color: Colors.primaryColor,
+        color: Colors.lightPrimaryColor,
         fontSize: 14.0,
         fontFamily: 'Montserrat_Regular',
     },
 
     primaryColor14Medium: {
-        color: Colors.primaryColor,
+        color: Colors.lightPrimaryColor,
         fontSize: 14.0,
         fontFamily: 'Montserrat_Medium',
     },
 
     primaryColor16Medium: {
-        color: Colors.primaryColor,
+        color: Colors.lightPrimaryColor,
         fontSize: 16.0,
         fontFamily: 'Montserrat_Medium',
     },
 
     primaryColor14SemiBold: {
-        color: Colors.primaryColor,
+        color: Colors.lightPrimaryColor,
         fontSize: 14.0,
         fontFamily: 'Montserrat_SemiBold',
     },
 
     primaryColor16SemiBold: {
-        color: Colors.primaryColor,
+        color: Colors.lightPrimaryColor,
         fontSize: 16.0,
         fontFamily: 'Montserrat_SemiBold',
     },
 
     primaryColor18SemiBold: {
-        color: Colors.primaryColor,
+        color: Colors.lightPrimaryColor,
         fontSize: 18.0,
         fontFamily: 'Montserrat_SemiBold',
     },
 
     primaryColor24SemiBold: {
-        color: Colors.primaryColor,
+        color: Colors.lightPrimaryColor,
         fontSize: 24.0,
         fontFamily: 'Montserrat_SemiBold',
     },
 
     primaryColor48SemiBold: {
-        color: Colors.primaryColor,
+        color: Colors.lightPrimaryColor,
         fontSize: 48.0,
         fontFamily: 'Montserrat_SemiBold',
     },
 
     primaryColor14Bold: {
-        color: Colors.primaryColor,
+        color: Colors.lightPrimaryColor,
         fontSize: 14.0,
         fontFamily: 'Montserrat_Bold',
     },

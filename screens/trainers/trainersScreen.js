@@ -24,7 +24,7 @@ const trainers = [
     {
         id: '3',
         trainerImage: require('../../assets/images/coachs/3.jpeg'),
-        trainerName: "Coach 3",
+        trainerName: "hamza",
         speciality: "Coach",
         yearOfExperience: 6,
         rating: 4.5,
@@ -46,7 +46,7 @@ const TrainersScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {header()}
                 {searchField()}
@@ -87,7 +87,7 @@ const TrainersScreen = ({ navigation }) => {
                     </View>
                 </View>
                 <View style={{ flexDirection: isRtl ? 'row-reverse' : 'row', alignItems: 'center' }}>
-                    <MaterialIcons name="star" size={16} color={Colors.yellowColor} />
+                    <MaterialIcons name="star" size={16} color={Colors.lightPrimaryColor} />
                     <Text style={{
                         marginLeft: isRtl ? 0.0 : Sizes.fixPadding - 7.0,
                         marginRight: isRtl ? Sizes.fixPadding - 7.0 : 0.0,
@@ -116,7 +116,7 @@ const TrainersScreen = ({ navigation }) => {
                 <TextInput
                     value={search}
                     onChangeText={(text) => setSearch(text)}
-                    selectionColor={Colors.primaryColor}
+                    selectionColor={Colors.lightPrimaryColor}
                     style={styles.textFieldStyle}
                 />
             </View>

@@ -36,7 +36,7 @@ const LevelSelectionScreen = ({ navigation, route }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {header()}
                 <ScrollView showsVerticalScrollIndicator={false}>
@@ -62,7 +62,7 @@ const LevelSelectionScreen = ({ navigation, route }) => {
                         value={height}
                         onChangeText={(text) => updateState({ height: text })}
                         style={{ ...Fonts.blackColor14Regular, height: 20.0, }}
-                        selectionColor={Colors.primaryColor}
+                        selectionColor={Colors.lightPrimaryColor}
                         keyboardType="numeric"
                     />
                     <Text style={{ ...Fonts.blackColor14Regular }}>
@@ -84,7 +84,7 @@ const LevelSelectionScreen = ({ navigation, route }) => {
                         value={blessure}
                         onChangeText={(text) => updateState({ blessure: text })}
                         style={{ ...Fonts.blackColor14Regular, height: 20.0, }}
-                        selectionColor={Colors.primaryColor}
+                        selectionColor={Colors.lightPrimaryColor}
                     />
                 </View>
             </View >
@@ -102,7 +102,7 @@ const LevelSelectionScreen = ({ navigation, route }) => {
                         value={weight}
                         onChangeText={(text) => updateState({ weight: text })}
                         style={{ ...Fonts.blackColor14Regular, height: 20.0, }}
-                        selectionColor={Colors.primaryColor}
+                        selectionColor={Colors.lightPrimaryColor}
                         keyboardType="numeric"
                     />
                     <Text style={{ ...Fonts.blackColor14Regular }}>
@@ -124,7 +124,7 @@ const LevelSelectionScreen = ({ navigation, route }) => {
                         value={age}
                         onChangeText={(text) => updateState({ age: text })}
                         style={{ ...Fonts.blackColor14Regular, height: 20.0, }}
-                        selectionColor={Colors.primaryColor}
+                        selectionColor={Colors.lightPrimaryColor}
                         keyboardType="numeric"
                     />
                 </View>
@@ -177,7 +177,7 @@ export default LevelSelectionScreen;
 
 const styles = StyleSheet.create({
     buttonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: Sizes.fixPadding,

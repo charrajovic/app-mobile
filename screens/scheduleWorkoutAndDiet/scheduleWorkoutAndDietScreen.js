@@ -118,7 +118,7 @@ const ScheduleWorkoutAndDietScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {header()}
                 {calendarInfo()}
@@ -246,7 +246,7 @@ const ScheduleWorkoutAndDietScreen = ({ navigation }) => {
                 activeOpacity={0.99}
                 onPress={() => updateState({ selectedIndex: index })}
                 style={{
-                    backgroundColor: selectedIndex == index ? Colors.primaryColor : Colors.whiteColor,
+                    backgroundColor: selectedIndex == index ? Colors.lightPrimaryColor : Colors.whiteColor,
                     borderTopLeftRadius: isRtl ? index == 2 ? Sizes.fixPadding - 2.0 : 0.0 : index == 1 ? Sizes.fixPadding - 2.0 : 0.0,
                     borderBottomLeftRadius: isRtl ? index == 2 ? Sizes.fixPadding - 2.0 : 0.0 : index == 1 ? Sizes.fixPadding - 2.0 : 0.0,
                     borderTopRightRadius: isRtl ? index == 1 ? Sizes.fixPadding - 2.0 : 0.0 : index == 2 ? Sizes.fixPadding - 2.0 : 0.0,
@@ -329,7 +329,7 @@ const ScheduleWorkoutAndDietScreen = ({ navigation }) => {
                 }}
                 style={{
                     ...styles.dayWrapStyle,
-                    backgroundColor: date.day == defaultDate ? Colors.primaryColor : Colors.whiteColor
+                    backgroundColor: date.day == defaultDate ? Colors.lightPrimaryColor : Colors.whiteColor
                 }}
             >
                 <Text style={date.day == defaultDate ? { ...Fonts.whiteColor18SemiBold } : { ...Fonts.grayColor18SemiBold }}>

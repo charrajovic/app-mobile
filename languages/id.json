@@ -9,26 +9,26 @@
         "exitText": "Tekan Kembali Sekali Lagi untuk Keluar"
     },
     "signinScreen": {
-        "header": "Masuk",
-        "email": "ID Email",
-        "password": "Kata sandi",
-        "forgetPwd": "Tidak ingat kata sandi?",
-        "signin": "Masuk",
-        "connect": "Atau Terhubung dengan",
-        "dontAccount": "Tidak punya akun?",
-        "signup": "Daftar",
+        "header": "Se connecter",
+        "email": "Adresse email",
+        "password": "mot de passe",
+        "forgetPwd": "j'oublié le mot de passe?",
+        "signin": "Se connecter",
+        "connect": "Connecté",
+        "dontAccount": "Tu n'as pas de compte?",
+        "signup": "S'inscrire",
         "exitText": "Tekan Kembali Sekali Lagi untuk Keluar"
     },
     "signupScreen": {
-        "header": "Daftar",
-        "name": "Nama lengkap",
-        "email": "ID Email",
-        "phone": "No Telepon",
-        "password": "Kata sandi",
-        "signup": "Daftar",
+        "header": "S'inscrire",
+        "name": "Nom",
+        "email": "Email",
+        "phone": "Prenom",
+        "password": "Password",
+        "signup": "S'inscrire",
         "connect": "Atau Terhubung dengan",
-        "alreadyAccount": "Sudah punya akun?",
-        "signin": "masuk"
+        "alreadyAccount": "Vous avez déjà un compte?",
+        "signin": "Se connecter"
     },
     "forgotPassword": {
         "header": "Tidak ingat kata sandi",
@@ -50,42 +50,45 @@
         "submit": "Kirim"
     },
     "genderSelectionScreen": {
-        "getInfoHeader": "Ceritakan tentang diri Anda!",
-        "getInfoDescription": "Untuk memberi Anda pengalaman yang lebih baik, kami perlu mengetahui jenis kelamin Anda",
-        "next": "Lanjut"
+        "getInfoHeader": "Parle-moi de toi!",
+        "getInfoDescription": "Pour vous offrir une meilleure expérience, nous devons connaître votre sexe",
+        "next": "Suivant"
     },
     "levelSelectionScreen": {
-        "getInfoHeader": "Pilih tingkat kebugaran Anda",
-        "getInfoDescription": "Ini membantu kami membuat paket pribadi Anda, Anda selalu dapat mengubahnya nanti",
-        "age": "Usia",
-        "weight": "Bobot",
-        "height": "Tinggi",
-        "blessure": "Tinggi",
-        "next": "Lanjut"
+        "getInfoHeader": "Choisissez votre niveau de forme physique",
+        "getInfoDescription": "Cela nous aide à créer votre plan personnel, vous pourrez toujours le modifier plus tard",
+        "age": "Age",
+        "weight": "Poids",
+        "height": "Taille",
+        "blessure": "Blessure",
+        "next": "Suivant"
     },
     "goalSelectionScreen": {
-        "getInfoHeader": "Pilih tujuan Anda",
-        "getInfoDescription": "Ini membantu kami membuat paket pribadi Anda, Anda selalu dapat mengubahnya nanti",
-        "next": "Lanjut",
-        "wait": "Mohon tunggu"
+        "getInfoHeader": "Choisissez votre destination",
+        "getInfoDescription": "Cela nous aide à créer votre plan personnel, vous pourrez toujours le modifier plus tard",
+        "next": "Suivant",
+        "wait": "Attends"
     },
     "bottomTabsScreen": {
-        "home": "Rumah",
-        "workout": "Bekerja",
+        "home": "Page d'accueil",
+        "workout": "Exercices",
         "insight": "Wawasan",
-        "diet": "Diet",
-        "profile": "Profil",
+        "diet": "Régime",
+        "profile": "Profile",
         "exitText": "Tekan Kembali Sekali Lagi untuk Keluar"
     },
     "homeScreen": {
-        "userWelcome": "Selamat pagi",
-        "joinNow": "Bergabung sekarang",
+        "userWelcome": "Bonne journée",
+        "welc": "Bonjour",
+        "joinNow": "Contactez-nous",
+        "object": "Ceci est votre\nPage d'accueil\nFormation personnelle",
         "premium1": "Mulai",
+        "easy": "Facile à utiliser",
         "premium3": "/bulan",
         "today": "Hari ini",
         "sessionStart": "Sesi yang akan datang dimulai di",
-        "todayPlanTitle": "Rencanamu hari ini",
-        "personalTrainerTitle": "Pelatih pribadi",
+        "todayPlanTitle": "Plan d'aujourd'hui",
+        "personalTrainerTitle": "Entraîneur personnel",
         "popularWorkoutTitle": "Program latihan populer",
         "motivationalVideoTitle": "Video Motivasi",
         "appointmentTitle": "Sebelum Anda memulai latihan ini, mohon ikuti saran dari pelatih.",
@@ -152,7 +155,7 @@
         "backToHome": "Kembali ke halaman rumah"
     },
     "workoutScreen": {
-        "header": "Bekerja",
+        "header": "Exercices",
         "todayVideo": "Video latihan hari ini",
         "workoutCategoryTitle": "Kategori Latihan",
         "workoutTitle": "Bekerja",
@@ -169,22 +172,25 @@
         "skip": "melewati"
     },
     "videosScreen": {
-        "header": "tranning seluruh tubuh"
+        "header": "Exercices",
+        "tody": "َAujourd'hui tu as",
+        "workout": "exercices"
     },
     "userProgramScreen": {
         "calories": "Kalori",
-        "equpiment": "Peralatan",
-        "netDuration": "Durasi bersih",
+        "equpiment": "Equipements",
+        "description": "Description",
+        "netDuration": "Durée",
         "min": "min",
-        "benefits": "Manfaat",
-        "sessionDetails": "Detail sesi",
-        "begin": "Mulai",
+        "benefits": "Avantages",
+        "sessionDetails": "Détails de la séance",
+        "begin": "Debut",
         "upcomingVideo": "Video Mendatang",
         "addInFav": "Ditambahkan di favorit",
         "removeFromFav": "Dihapus dari Favorit"
     },
     "trainersScreen": {
-        "header": "Pelatih",
+        "header": "Entraineur",
         "trainer1Name": "Jems joy",
         "trainer1Speciality": "Spesialis yoga",
         "trainer2Name": "Katin Markin",
@@ -201,8 +207,8 @@
         "trainer7Speciality": "pelatih kekuatan dan pengkondisian",
         "trainer8Name": "Madhuri patel",
         "trainer8Speciality": "pelatih kekuatan dan pengkondisian",
-        "years": "bertahun-tahun",
-        "experiance": "pengalaman"
+        "years": "ans",
+        "experiance": "experience"
     },
     "insightScreen": {
         "header": "Wawasan",
@@ -241,7 +247,7 @@
     },
     "dietScreen": {
         "header": "Diet",
-        "todayPlanTitle": "Rencana diet hari ini",
+        "todayPlanTitle": "Plan d'aujourd'hui",
         "dietCategoryTitle": "Kategori diet",
         "seeAll": "Lihat semua",
         "favDietTitle": "Makanan favorit",
@@ -257,10 +263,10 @@
         "protein": "Protein",
         "fat": "Gemuk",
         "calories": "Kalori",
-        "ingrediants": "Bahan",
+        "ingrediants": "Ingrediants",
         "recipe": "resep",
-        "readMore": "Baca lebih banyak",
-        "readLess": "Baca lebih sedikit",
+        "readMore": "Voir plus",
+        "readLess": "Voir moins",
         "addInFav": "Ditambahkan di favorit",
         "removeFromFav": "Dihapus dari Favorit"
     },
@@ -277,8 +283,8 @@
         "calories": "Kalori"
     },
     "profileScreen": {
-        "header": "Profil",
-        "editProfile": "Sunting profil",
+        "header": "Profile",
+        "editProfile": "Editer le profile",
         "favourite": "Favorit",
         "progressReport": "Laporan perkembangan",
         "notification": "Pemberitahuan",
@@ -288,8 +294,8 @@
         "about": "Tentang",
         "help": "Membantu",
         "languages": "Bahasa",
-        "logout": "Keluar",
-        "cancel": "Membatalkan",
+        "logout": "Se déconnecter",
+        "cancel": "Annuler",
         "logoutInfo": "Apakah Anda yakin ingin keluar?"
     },
     "progressReportScreen": {
@@ -335,13 +341,13 @@
         "header": "Membantu",
         "contact": "Berhubungan",
         "helpDescription": "Jangan Ragu untuk menjatuhkan kami di bawah ini",
-        "enterName": "Masukkan nama Anda",
-        "enterEmail": "Masukkan id Email Anda",
+        "enterName": "Entrer le nom",
+        "enterEmail": "Entrer l'email",
         "enterMessage": "Tulis Pesan Anda Disini",
-        "send": "Kirim",
-        "submitted": "Dikirim",
+        "send": "Envoyer",
+        "submitted": "Sauvegarder",
         "submissionSuccess": "Permintaan Anda berhasil Dikirim, kami akan menghubungi Anda kembali.",
-        "ok": "Oke"
+        "ok": "Ok"
     },
     "userSubscriptionScreen": {
         "header": "Rincian berlangganan",
@@ -352,12 +358,16 @@
         "proceed": "Melanjutkan"
     },
     "languagesScreen": {
-        "header": "Bahasa",
-        "english": "English",
+        "header": "Language",
+        "english": "Anglais",
         "hindi": "हिन्दी",
         "indonesian": "Indonesian",
+        "french": "francais",
         "chienese": "中国人",
-        "arabic": "عربي"
+        "arabic": "arabe",
+        "signin":"Suivant",
+        "next":"Suivant",
+        "skip":"Passer"
     },
     "calender": {
         "jan": "Jan",

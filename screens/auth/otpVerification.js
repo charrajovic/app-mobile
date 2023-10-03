@@ -30,7 +30,7 @@ const OtpVerificationScreen = ({ navigation, route }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {backArrow()}
                 <ScrollView showsVerticalScrollIndicator={false}>
@@ -61,7 +61,7 @@ const OtpVerificationScreen = ({ navigation, route }) => {
                 <View style={styles.codeInfoWrapStyle}>
                     <View style={styles.textFieldWrapStyle}>
                         <TextInput
-                            selectionColor={Colors.primaryColor}
+                            selectionColor={Colors.lightPrimaryColor}
                             value={firstDigit}
                             style={{ paddingLeft: Sizes.fixPadding, ...Fonts.primaryColor18SemiBold, }}
                             onChangeText={(text) => {
@@ -74,7 +74,7 @@ const OtpVerificationScreen = ({ navigation, route }) => {
 
                     <View style={styles.textFieldWrapStyle}>
                         <TextInput
-                            selectionColor={Colors.primaryColor}
+                            selectionColor={Colors.lightPrimaryColor}
                             value={secondDigit}
                             style={{ paddingLeft: Sizes.fixPadding, ...Fonts.primaryColor18SemiBold, }}
                             ref={secondTextInput}
@@ -88,7 +88,7 @@ const OtpVerificationScreen = ({ navigation, route }) => {
 
                     <View style={styles.textFieldWrapStyle}>
                         <TextInput
-                            selectionColor={Colors.primaryColor}
+                            selectionColor={Colors.lightPrimaryColor}
                             style={{ paddingLeft: Sizes.fixPadding, ...Fonts.primaryColor18SemiBold, }}
                             keyboardType="numeric"
                             value={thirdDigit}
@@ -102,7 +102,7 @@ const OtpVerificationScreen = ({ navigation, route }) => {
 
                     <View style={styles.textFieldWrapStyle}>
                         <TextInput
-                            selectionColor={Colors.primaryColor}
+                            selectionColor={Colors.lightPrimaryColor}
                             style={{ paddingLeft: Sizes.fixPadding, ...Fonts.primaryColor18SemiBold, }}
                             keyboardType="numeric"
                             value={forthDigit}
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center'
     },
     buttonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: Sizes.fixPadding,

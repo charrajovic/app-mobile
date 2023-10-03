@@ -62,7 +62,7 @@ const TrainerProfileScreen = ({ navigation, route }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             {collapsibleHeader()}
         </SafeAreaView>
     )
@@ -114,7 +114,7 @@ const TrainerProfileScreen = ({ navigation, route }) => {
                 renderContent={renderContent}
                 renderNavBar={renderNavBar}
                 renderToolBar={renderToolBar}
-                collapsedNavBarBackgroundColor={Colors.primaryColor}
+                collapsedNavBarBackgroundColor={Colors.lightPrimaryColor}
                 translucentStatusBar={false}
             />
         )
@@ -205,7 +205,7 @@ const TrainerProfileScreen = ({ navigation, route }) => {
                     {tr('reviews')}
                 </Text>
                 <View style={{ flexDirection: isRtl ? 'row-reverse' : 'row', alignItems: 'center' }}>
-                    <MaterialIcons name="star" size={16} color={Colors.yellowColor} />
+                    <MaterialIcons name="star" size={16} color={Colors.lightPrimaryColor} />
                     <Text style={{ ...Fonts.blackColor16Regular }}>
                         4.5
                     </Text>
@@ -225,7 +225,7 @@ const TrainerProfileScreen = ({ navigation, route }) => {
                 <TouchableOpacity
                     activeOpacity={0.99}
                     onPress={() => navigation.push('SubscriptionDetail')}
-                    style={{ backgroundColor: Colors.primaryColor, ...styles.buttonStyle, }}
+                    style={{ backgroundColor: Colors.lightPrimaryColor, ...styles.buttonStyle, }}
                 >
                     <Text style={{ ...Fonts.whiteColor16SemiBold }}>
                         {tr('book')}

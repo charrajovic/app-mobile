@@ -20,7 +20,7 @@ const ProfileScreen = ({ navigation }) => {
     AsyncStorage.getItem('token').then(async (storedValue) => {
         if (storedValue) {
             try {
-                const response = await axios.get('https://xxtreme-fitness.com/api/auth/user', {
+                const response = await axios.get('https://api2v.xxtreme-fitness.com/api/auth/user', {
                   headers: {
                     Authorization: `Bearer ${storedValue}`,
                   },
@@ -45,8 +45,8 @@ const ProfileScreen = ({ navigation }) => {
     const [showLogoutDialog, setShowLogoutDialog] = useState(false);
 
     return (
-        <SafeAreaView style={{ flex: 1, backgroundColor: Colors.primaryColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+        <SafeAreaView style={{ flex: 1, backgroundColor: Colors.lightPrimaryColor }}>
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {header()}
                 <View style={styles.sheetStyle}>
@@ -224,7 +224,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     editProfileButtonStyle: {
-        borderColor: Colors.primaryColor,
+        borderColor: Colors.lightPrimaryColor,
         borderWidth: 1.0,
         borderRadius: Sizes.fixPadding - 2.0,
         alignItems: 'center',
@@ -257,9 +257,9 @@ const styles = StyleSheet.create({
         borderColor: Colors.lightGrayColor,
     },
     logoutButtonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         marginLeft: Sizes.fixPadding,
-        borderColor: Colors.primaryColor,
+        borderColor: Colors.lightPrimaryColor,
     },
     cancelAndLogoutButtonWrapStyle: {
         marginHorizontal: Sizes.fixPadding * 2.0,

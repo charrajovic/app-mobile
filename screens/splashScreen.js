@@ -12,7 +12,7 @@ const SplashScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: '#F8FEFF' }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.yellowColor} />
             <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
                 {appIcon()}
                 {appName()}

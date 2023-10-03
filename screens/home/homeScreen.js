@@ -1,4 +1,4 @@
-import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View, StatusBar, ImageBackground, Image, Dimensions, FlatList, Linking } from 'react-native'
+import { SafeAreaView, ScrollView, StyleSheet, Text, TouchableOpacity, View, StatusBar, ImageBackground, Image, Dimensions, FlatList, Linking, ActivityIndicator } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import { Colors, Fonts, Sizes } from '../../constants/styles';
 import { MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
@@ -55,7 +55,7 @@ const trainers = [
     {
         id: '3',
         trainerImage: require('../../assets/images/coachs/3.jpeg'),
-        trainerName: 'Coach 3',
+        trainerName: 'hamza',
         specialist: 'Coach',
         rating: 4.5,
     }
@@ -102,6 +102,35 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
 
     const [userInfo, setUserInfo] = useState(null);
     const [dietsInfo, setDietsInfo] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        // Add a navigation event listener
+        const unsubscribe = navigation.addListener('focus', () => {
+          // This code will run every time the screen comes into focus
+          console.log('Screen is in focus');
+          fetchUserInfo()
+        });
+        
+        // Clean up the event listener when the component unmounts
+        return unsubscribe;
+      }, [navigation]);
+
+      function loadingDialog() {
+        return (
+
+            
+            <Overlay
+                isVisible={isLoading}
+                overlayStyle={styles.dialogStyle}
+            >
+                <ActivityIndicator size={35} color={Colors.lightPrimaryColor} style={{ alignSelf: 'center' }} />
+                <Text style={{ marginTop: Sizes.fixPadding, textAlign: 'center', ...Fonts.blackColor16Bold }}>
+                    {tr('wait')}
+                </Text>
+            </Overlay>
+        )
+    }
 
     useEffect(() => {
       async function getUserInfo() {
@@ -118,11 +147,12 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
   
   
   async function fetchUserInfo() {
+    setIsLoading(true)
     try {
         console.log('here')
-      AsyncStorage.getItem('token').then(async (storedValue) => {
+      await AsyncStorage.getItem('token').then(async (storedValue) => {
         if (storedValue) {
-      const response = await axios.get('https://xxtreme-fitness.com/api/auth/user', {
+      const response = await axios.get('https://api2v.xxtreme-fitness.com/api/auth/user', {
         headers: {
           Authorization: `Bearer ${storedValue}`,
         },
@@ -130,7 +160,10 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
         // console.log(result.data)
         const data = await result.data;
         setUserInfo(data);
+        setIsLoading(false)
       return data;
+      }).catch((e) => {
+        setIsLoading(false)
       });
       
         }})
@@ -138,10 +171,12 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
       console.error('Error fetching user information:', error);
       throw error;
     }
+    setIsLoading(false)
+    setIsLoading(true)
     try {
-        AsyncStorage.getItem('token').then(async (storedValue) => {
+        await AsyncStorage.getItem('token').then(async (storedValue) => {
             if (storedValue) {
-          const response = await axios.get('https://xxtreme-fitness.com/api/auth/exercices', {
+          const response = await axios.get('https://api2v.xxtreme-fitness.com/api/auth/exercices', {
             headers: {
               Authorization: `Bearer ${storedValue}`,
             },
@@ -149,14 +184,21 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
             console.log(result.data)
             const data = await result.data.userDiet;
             setDietsInfo(data);
+    setIsLoading(false)
           return data;
+          }).catch((e)=> {
+    setIsLoading(false)
+
           });
           
             }})
         } catch (error) {
           console.error('Error fetching user information:', error);
           throw error;
+    setIsLoading(false)
+
         }
+        setIsLoading(false)
     
 }
     
@@ -167,7 +209,7 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
     if(userInfo?.status == 1) {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-                <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+                <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
                 <View style={{ flex: 1, }}>
                     
                     {header()}
@@ -186,7 +228,7 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
     if(userInfo?.status == 0) {
         return (
             <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-                <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+                <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
                 <View style={{ flex: 1, }}>
                     
                     {header()}
@@ -205,7 +247,7 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
     else {
         return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 
                 {header()}
@@ -220,6 +262,8 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
                     
                 </ScrollView>
                 {appointmentDialog()}
+                {loadingDialog()}
+                
             </View>
         </SafeAreaView>
     )
@@ -357,7 +401,7 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
                             </Text>
                         </View>
                         <View style={{ marginTop: Sizes.fixPadding - 7.0, flexDirection: isRtl ? 'row-reverse' : 'row' }}>
-                            <MaterialIcons name="star" size={13} color={Colors.yellowColor} />
+                            <MaterialIcons name="star" size={13} color={Colors.lightPrimaryColor} />
                             <Text style={{ ...Fonts.blackColor12Regular, marginLeft: Sizes.fixPadding - 7.0 }}>
                                 {item.rating}
                             </Text>
@@ -391,7 +435,7 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
                 <TouchableOpacity
                     activeOpacity={0.99}
                     onPress={() => navigation.push('MealCategoryVideo', {item})}
-                    style={{ alignItems: 'center', marginRight: Sizes.fixPadding * 2.0 }}
+                    style={{ alignItems: 'center', marginRight: Sizes.fixPadding * 2.0,  borderWidth: 1}}
                 >
                     
                     <Image
@@ -409,12 +453,22 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
                 </TouchableOpacity>
             )
         }
+        console.log(dietsInfo?.length)
         return (
             <View style={{ marginTop: Sizes.fixPadding - 5.0 }}>
                 <Text style={{ marginHorizontal: Sizes.fixPadding * 2.0, ...Fonts.blackColor16SemiBold }}>
                     {tr('todayPlanTitle')}
                 </Text>
                 <View style={{ marginTop: Sizes.fixPadding }}>
+                { dietsInfo?.length == 0 ? <Text style={{alignItems: 'center',
+        backgroundColor: Colors.whiteColor,
+        elevation: 2.0,
+        position: 'absolute',
+        bottom: 50.0,
+        right: 120,
+        paddingHorizontal: Sizes.fixPadding * 2.0,
+        paddingVertical: Sizes.fixPadding + 5.0,
+        borderRadius: Sizes.fixPadding - 2.0}}>No diets affected </Text> : null }
                     <FlatList
                         data={dietsInfo ? dietsInfo : ''}
                         keyExtractor={(item) => `${item.id}`}
@@ -422,6 +476,7 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
                         horizontal
                         contentContainerStyle={{ paddingBottom: Sizes.fixPadding * 4.0, paddingLeft: Sizes.fixPadding * 2.0 }}
                         showsHorizontalScrollIndicator={false}
+                        style={{ minHeight: 150}}
                     />
                 </View>
             </View>
@@ -458,12 +513,12 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
         return (
             <View style={{ ...styles.bannerWrapStyle, flexDirection: 'row' }}>
                 
-                <View style={{ zIndex: 1.0, flex: 0.8, }}>
+                <View style={{ }}>
                     <Text style={{ ...Fonts.whiteColor22Bold }}>
-                        {`This Is Your\nHome Page\nPersonal Tranning`}
+                        {tr('object')}
                     </Text>
                     <Text style={{ ...Fonts.whiteColor14Medium }}>
-                        Easy to use
+                        {tr('easy')}
                     </Text>
                     <Text style={{ ...Fonts.whiteColor14Medium, color:'orange' }}>
                     {tstt}
@@ -481,7 +536,7 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
                 </View>
                 <View style={{ position: 'absolute', right: 0.0, bottom: 2.0 }}>
                     <Image
-                        source={require('../../assets/images/exercises/exercise1.png')}
+                        source={require('../../assets/images/coachs/22.png')}
                         style={{
                             height: width / 1.7,
                             resizeMode: 'stretch',
@@ -504,7 +559,7 @@ const HomeScreen = ({ navigation, route, screenProps }) => {
                     />
                     <View style={{ flex: 1, marginHorizontal: Sizes.fixPadding + 5.0 }}>
                         <Text style={{ ...Fonts.blackColor16SemiBold }}>
-                            Bonjour {userInfo ? userInfo.name : ''} {userInfo ? userInfo.lastname : ''}
+                        {tr('welc')} {userInfo ? userInfo.name : ''} {userInfo ? userInfo.lastname : ''}
                         </Text>
                         <Text style={{ ...Fonts.blackColor14Regular }}>
                             {tr('userWelcome')}
@@ -543,6 +598,15 @@ const styles = StyleSheet.create({
         right: 0,
         backgroundColor: '#FFFFFF', // Set the background color as needed
       },
+      dialogStyle: {
+        width: '80%',
+        backgroundColor: Colors.whiteColor,
+        borderRadius: Sizes.fixPadding,
+        paddingHorizontal: Sizes.fixPadding * 2.0,
+        paddingBottom: Sizes.fixPadding * 3.5,
+        paddingTop: Sizes.fixPadding * 3.0,
+        elevation: 3.0,
+    },
     headerWrapStyle: {
         marginVertical: Sizes.fixPadding + 5.0,
         marginHorizontal: Sizes.fixPadding * 2.0,
@@ -582,7 +646,7 @@ const styles = StyleSheet.create({
     },
     sessionStartTimeWrapStyle: {
         marginTop: Sizes.fixPadding - 7.0,
-        borderColor: Colors.primaryColor,
+        borderColor: Colors.lightPrimaryColor,
         borderWidth: 1.0,
         borderRadius: Sizes.fixPadding,
         paddingHorizontal: Sizes.fixPadding + 5.0,
@@ -614,7 +678,7 @@ const styles = StyleSheet.create({
     currencyWrapStyle: {
         margin: Sizes.fixPadding - 3.0,
         alignSelf: 'flex-end',
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         width: 18.0,
         height: 18.0,
         borderRadius: 9.0,
@@ -633,7 +697,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     buttonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: Sizes.fixPadding,

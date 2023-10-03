@@ -30,7 +30,7 @@ const HelpScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {header()}
                 <ScrollView showsVerticalScrollIndicator={false}>
@@ -110,7 +110,7 @@ const HelpScreen = ({ navigation }) => {
                 value={message}
                 onChangeText={(text) => updateState({ message: text })}
                 style={styles.textFieldStyle}
-                selectionColor={Colors.primaryColor}
+                selectionColor={Colors.lightPrimaryColor}
                 multiline
                 numberOfLines={8}
             />
@@ -125,7 +125,7 @@ const HelpScreen = ({ navigation }) => {
                 value={email}
                 onChangeText={(text) => updateState({ email: text })}
                 style={styles.textFieldStyle}
-                selectionColor={Colors.primaryColor}
+                selectionColor={Colors.lightPrimaryColor}
                 keyboardType="email-address"
             />
         )
@@ -139,7 +139,7 @@ const HelpScreen = ({ navigation }) => {
                 value={name}
                 onChangeText={(text) => updateState({ name: text })}
                 style={styles.textFieldStyle}
-                selectionColor={Colors.primaryColor}
+                selectionColor={Colors.lightPrimaryColor}
             />
         )
     }
@@ -187,7 +187,7 @@ const styles = StyleSheet.create({
         marginBottom: Sizes.fixPadding * 2.0,
     },
     buttonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: Sizes.fixPadding,
@@ -197,7 +197,7 @@ const styles = StyleSheet.create({
     doneIconWrapStyle: {
         width: width / 3.5, height: width / 3.5,
         borderRadius: (width / 3.5) / 2.0,
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: -Sizes.fixPadding * 5.0,

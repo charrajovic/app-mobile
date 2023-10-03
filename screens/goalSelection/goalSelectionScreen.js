@@ -38,7 +38,7 @@ const GoalSelectionScreen = ({ navigation, route }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {header()}
                 <ScrollView
@@ -60,7 +60,7 @@ const GoalSelectionScreen = ({ navigation, route }) => {
                 isVisible={isLoading}
                 overlayStyle={styles.dialogStyle}
             >
-                <ActivityIndicator size={35} color={Colors.primaryColor} style={{ alignSelf: 'center' }} />
+                <ActivityIndicator size={35} color={Colors.lightPrimaryColor} style={{ alignSelf: 'center' }} />
                 <Text style={{ marginTop: Sizes.fixPadding, textAlign: 'center', ...Fonts.blackColor16Bold }}>
                     {tr('wait')}
                 </Text>
@@ -112,7 +112,7 @@ const GoalSelectionScreen = ({ navigation, route }) => {
                         blessure: tirth.blessure,
                         objectif: goalsList[selectedGoalIndex]
                     }
-                    axios.post('https://xxtreme-fitness.com/api/auth/signup', data).then(response => {
+                    axios.post('https://api2v.xxtreme-fitness.com/api/auth/signup', data).then(response => {
                         setTimeout(() => {
                             setIsLoading(false)
                             navigation.push('Signin')
@@ -167,7 +167,7 @@ export default GoalSelectionScreen;
 
 const styles = StyleSheet.create({
     buttonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: Sizes.fixPadding,
@@ -177,7 +177,7 @@ const styles = StyleSheet.create({
         marginBottom: Sizes.fixPadding * 2.0,
     },
     goalWrapStyle: {
-        borderColor: Colors.primaryColor,
+        borderColor: Colors.lightPrimaryColor,
         alignSelf: 'center',
         alignItems: 'center',
         justifyContent: 'center',

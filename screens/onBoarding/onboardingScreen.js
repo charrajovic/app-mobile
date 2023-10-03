@@ -1,149 +1,92 @@
-import { StyleSheet, Text, View, SafeAreaView, BackHandler, StatusBar, Image, Dimensions, FlatList } from 'react-native'
-import React, { useState, useCallback, useRef } from 'react'
-import { Colors, Fonts, Sizes } from '../../constants/styles'
-import { useFocusEffect } from '@react-navigation/native';
+import { StyleSheet, Text, View, SafeAreaView, StatusBar, TouchableOpacity, ScrollView } from 'react-native'
+import React, { useState,  useCallback, useRef  } from 'react'
+import { Colors, Fonts, Sizes } from '../../constants/styles';
+import { MaterialIcons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useTranslation } from 'react-i18next';
 
-const { width } = Dimensions.get('window');
-
-const OnboardingScreen = ({ navigation }) => {
+const LanguagesScreen = ({ navigation, route }) => {
 
     const { t, i18n } = useTranslation();
 
     const isRtl = i18n.dir() == 'rtl';
 
-    function tr(key) {
-        return t(`onboardingScreen:${key}`)
-    }
-
-    const onboardingScreenList = [
-        {
-            id: '1',
-            onboardingImage: require('../../assets/images/onboarding/onboarding1.png'),
-            onboardingTitle: tr('title1'),
-        },
-        {
-            id: '2',
-            onboardingImage: require('../../assets/images/onboarding/onboarding2.png'),
-            onboardingTitle: tr('title2'),
-        },
-        {
-            id: '3',
-            onboardingImage: require('../../assets/images/onboarding/onboarding3.png'),
-            onboardingTitle: tr('title3'),
-        },
-    ];
-
-    const backAction = () => {
-        backClickCount == 1 ? BackHandler.exitApp() : _spring();
-        return true;
-    }
-
-    useFocusEffect(
-        useCallback(() => {
-            BackHandler.addEventListener("hardwareBackPress", backAction);
-            return () => BackHandler.removeEventListener("hardwareBackPress", backAction);
-        }, [backAction])
-    );
-
-    function _spring() {
-        setBackClickCount(1);
-        setTimeout(() => {
-            setBackClickCount(0)
-        }, 1000)
-    }
-
+    console.log(isRtl)
     const listRef = useRef();
     const [backClickCount, setBackClickCount] = useState(0);
     const [currentScreen, setCurrentScreen] = useState(0);
 
-    const scrollToIndex = ({ index }) => {
-        listRef.current.scrollToIndex({ animated: true, index: index });
-        setCurrentScreen(index);
-    }
+    const [selectedLanguage, setSelectedLanguage] = useState(i18n.resolvedLanguage);
 
-    const renderItem = ({ item }) => (
-        <View style={{ flex: 1, width: width, height: '100%', overflow: 'hidden' }}>
-            <View style={{
-                flex: 1.0,
-                height: '60%',
-                transform: [{ rotate: '-20deg' }],
-            }}>
-                <Image
-                    source={item.onboardingImage}
-                    style={styles.onboardingImageStyle}
-                />
-            </View>
-            <View style={{ marginTop: '20%', }}>
-                <Text numberOfLines={2} style={{ textAlign: 'center', ...Fonts.blackColor24SemiBold }}>
-                    {item.onboardingTitle}
-                </Text>
-            </View>
-        </View>
-    )
+    function tr(key) {
+        return t(`languagesScreen:${key}`)
+    }
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={true} backgroundColor='transparent' />
-            {onboardingImageWithText()}
-            <View style={{ flex: 0.5, justifyContent: 'space-between' }}>
-                {indicators()}
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
+            <View style={{ flex: 1, }}>
+                {header()}
+                {languages()}
                 {skipNextAndLoginText()}
             </View>
-            {exitInfo()}
         </SafeAreaView>
     )
 
-    function exitInfo() {
+    function languages() {
         return (
-            backClickCount == 1
-                ?
-                <View style={[styles.animatedView]}>
-                    <Text style={{ ...Fonts.whiteColor14Medium }}>
-                        {tr('exitText')}
-                    </Text>
+            <ScrollView showsVerticalScrollIndicator={false} contentContainerStyle={{ paddingTop: Sizes.fixPadding - 5.0 }}>
+                
+                {languageShort({ language: `${tr('french')}`, lang: 'id' })}
+                {languageShort({ language: `${tr('english')}`, lang: 'en' })}
+                {languageShort({ language: `${tr('arabic')}`, lang: 'ar' })}
+            </ScrollView>
+        )
+    }
+
+    async function onChangeLang(lang) {
+        i18n.changeLanguage(lang);
+        try {
+            await AsyncStorage.setItem('@APP:languageCode', lang);
+        } catch (error) {
+            alert('something goes wrong')
+        }
+    }
+
+    function languageShort({ language, lang }) {
+        return (
+            <TouchableOpacity
+                activeOpacity={0.99}
+                onPress={() => {
+                    onChangeLang(lang)
+                    setSelectedLanguage(lang)
+                }}
+                style={{ ...styles.languageWrapStyle, flexDirection: isRtl ? 'row-reverse' : 'row', }}
+            >
+                <View style={{
+                    ...styles.radioButtonStyle,
+                    borderColor: selectedLanguage == lang ? Colors.lightPrimaryColor : Colors.whiteColor,
+                    backgroundColor: selectedLanguage == lang ? Colors.lightPrimaryColor : Colors.grayColor,
+                }}>
+                    <View style={{ backgroundColor: Colors.whiteColor, width: 8.0, height: 8.0, borderRadius: 4.0 }} />
                 </View>
-                :
-                null
+                <Text style={{ marginLeft: isRtl ? 0.0 : Sizes.fixPadding, marginRight: isRtl ? Sizes.fixPadding : 0.0, ...Fonts.blackColor16Medium }}>
+                    {language}
+                </Text>
+            </TouchableOpacity>
         )
     }
 
-    function onboardingImageWithText() {
+    function header() {
         return (
-            <FlatList
-                ref={listRef}
-                data={onboardingScreenList}
-                keyExtractor={(item) => `${item.id}`}
-                renderItem={renderItem}
-                horizontal
-                scrollEventThrottle={32}
-                pagingEnabled
-                onMomentumScrollEnd={onScrollEnd}
-                showsHorizontalScrollIndicator={false}
-            />
-        )
-    }
-
-    function indicators() {
-        return (
-            <View style={{ ...styles.indicatorWrapStyle, }}>
-                {
-                    onboardingScreenList.map((item, index) => {
-                        return (
-                            <View
-                                key={`${item.id}`}
-                                style={{
-                                    ...currentScreen == index ? styles.selectedIndicatorStyle : styles.indicatorStyle,
-                                    backgroundColor: currentScreen == index ? Colors.primaryColor : Colors.lightGrayColor,
-                                }}
-                            />
-                        )
-                    })
-                }
+            <View style={{ margin: Sizes.fixPadding * 2.0, flexDirection: isRtl ? 'row-reverse' : 'row', alignItems: 'center' }}>
+                
+                <Text style={{ marginHorizontal: Sizes.fixPadding, ...Fonts.blackColor18SemiBold }}>
+                    {tr('header')}
+                </Text>
             </View>
         )
     }
-
     function skipNextAndLoginText() {
         return (
             <View style={{ ...styles.skipNextAndLogoinWrapStyle, flexDirection: isRtl ? 'row-reverse' : 'row' }}>
@@ -154,7 +97,7 @@ const OnboardingScreen = ({ navigation }) => {
                     {currentScreen == 2 ? '' : tr('skip')}
                 </Text>
                 <Text
-                    onPress={() => currentScreen == 2 ? navigation.push('Signin') : scrollToIndex({ index: currentScreen + 1 })}
+                    onPress={() => currentScreen >= 0 ? navigation.push('Signin') : scrollToIndex({ index: currentScreen + 1 })}
                     style={{ ...Fonts.primaryColor16SemiBold }}
                 >
                     {currentScreen == 2 ? tr('signin') : tr('next')}
@@ -162,57 +105,33 @@ const OnboardingScreen = ({ navigation }) => {
             </View>
         )
     }
-
-    function onScrollEnd(e) {
-        let contentOffset = e.nativeEvent.contentOffset;
-        let viewSize = e.nativeEvent.layoutMeasurement;
-        let pageNum = Math.floor(contentOffset.x / viewSize.width);
-        setCurrentScreen(pageNum);
-    }
 }
 
-export default OnboardingScreen;
+
+export default LanguagesScreen;
 
 const styles = StyleSheet.create({
-    animatedView: {
-        backgroundColor: Colors.lightBlackColor,
-        position: "absolute",
-        bottom: 20,
-        alignSelf: 'center',
-        borderRadius: Sizes.fixPadding * 2.0,
+    languageWrapStyle: {
+        backgroundColor: Colors.whiteColor,
+        elevation: 2.0,
+        borderRadius: Sizes.fixPadding - 2.0,
+        alignItems: 'center',
+        marginHorizontal: Sizes.fixPadding * 2.0,
         paddingHorizontal: Sizes.fixPadding + 5.0,
-        paddingVertical: Sizes.fixPadding,
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    selectedIndicatorStyle: {
-        marginHorizontal: Sizes.fixPadding - 7.0,
-        width: 15.0,
-        height: 15.0,
-        borderRadius: 7.5,
-    },
-    indicatorStyle: {
-        marginHorizontal: Sizes.fixPadding - 7.0,
-        width: 8.0,
-        height: 8.0,
-        borderRadius: 4.0,
+        paddingVertical: Sizes.fixPadding + 2.0,
+        marginBottom: Sizes.fixPadding * 2.0,
     },
     skipNextAndLogoinWrapStyle: {
         margin: Sizes.fixPadding * 2.0,
         alignItems: 'center',
         justifyContent: 'space-between'
     },
-    indicatorWrapStyle: {
-        marginTop: Sizes.fixPadding * 2.0,
+    radioButtonStyle: {
+        width: 18.0,
+        height: 18.0,
+        borderRadius: 9.0,
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row',
-    },
-    onboardingImageStyle: {
-        marginTop: -Sizes.fixPadding * 4.0,
-        height: '100%',
-        resizeMode: 'stretch',
-        width: '150%',
-        alignSelf: 'center',
+        borderWidth: 1.0,
     }
 })

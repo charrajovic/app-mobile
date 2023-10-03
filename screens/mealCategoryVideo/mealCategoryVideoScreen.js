@@ -77,7 +77,7 @@ const MealCategoryVideoScreen = ({ navigation, route }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar hidden={inFullscreen2 ? true : false} translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar hidden={inFullscreen2 ? true : false} translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {videoDisplay()}
                 <ScrollView showsVerticalScrollIndicator={false}>
@@ -96,7 +96,7 @@ const MealCategoryVideoScreen = ({ navigation, route }) => {
         return (
             <View style={{ marginTop: Sizes.fixPadding, marginHorizontal: Sizes.fixPadding * 2.0, }}>
                 <Text style={{ ...Fonts.blackColor16SemiBold }}>
-                    {"Description"}
+                    {tr('description')}
                 </Text>
                 <View style={{ marginTop: Sizes.fixPadding }}>
                     {
@@ -203,7 +203,7 @@ const MealCategoryVideoScreen = ({ navigation, route }) => {
                     <MaterialIcons
                         name={inFavorite ? "favorite" : "favorite-outline"}
                         size={24}
-                        color={Colors.primaryColor}
+                        color={Colors.lightPrimaryColor}
                         style={{
                             marginRight: isRtl ? 0.0 : Sizes.fixPadding + 5.0,
                             marginLeft: isRtl ? Sizes.fixPadding + 5.0 : 0.0
@@ -213,7 +213,7 @@ const MealCategoryVideoScreen = ({ navigation, route }) => {
                             setInFavorite(!inFavorite)
                         }}
                     />
-                    <MaterialCommunityIcons name="arrow-collapse-down" size={25} color={Colors.primaryColor} />
+                    <MaterialCommunityIcons name="arrow-collapse-down" size={25} color={Colors.lightPrimaryColor} />
                 </View>
             </View>
         )

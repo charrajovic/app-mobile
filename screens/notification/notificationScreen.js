@@ -13,37 +13,14 @@ const rowTranslateAnimatedValues = {};
 const newNotificationsList = [
     {
         key: '1',
-        title: "Congratulation",
-        description: "50% of your daiy task is completed.",
-        notificationTime: "2 min",
-    },
-    {
-        key: '2',
-        title: "Attention",
-        description: "Your plan is expire very soon. subscribe now",
+        title: "Félicitation",
+        description: "Merci d'utiliser notre application aujourd'hui.",
         notificationTime: "2 min",
     },
 ];
 
 const oldNotificationsList = [
-    {
-        key: '1',
-        title: "Daily Task",
-        description: "It’s time to drink a water.",
-        notificationTime: "3:00 PM",
-    },
-    {
-        key: '2',
-        title: "Drink more",
-        description: "You drink only 200ml today. to reach your goal yo drink 500ml more.",
-        notificationTime: "5:00 PM",
-    },
-    {
-        key: '3',
-        title: "Appointment",
-        description: "You fix appointment yoga specialist mr joy.",
-        notificationTime: "9:00 PM",
-    },
+    
 ];
 
 const NotificationScreen = ({ navigation }) => {
@@ -296,7 +273,7 @@ const NotificationScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1 }}>
                 {header()}
                 {listData.length == 0 && oldListData.length == 0 ?
@@ -326,7 +303,7 @@ const NotificationScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
     rowBack: {
         alignItems: 'center',
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         flex: 1,
         marginBottom: Sizes.fixPadding * 2.0,
     },
@@ -341,7 +318,7 @@ const styles = StyleSheet.create({
         marginHorizontal: Sizes.fixPadding * 2.0,
         marginBottom: Sizes.fixPadding * 2.0,
         borderRadius: Sizes.fixPadding - 2.0,
-        borderColor: Colors.primaryColor,
+        borderColor: Colors.lightPrimaryColor,
     },
     noNotificationWrapStyle: {
         flex: 1,

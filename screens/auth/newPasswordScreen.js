@@ -27,7 +27,7 @@ const NewPasswordScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {backArrow()}
                 <ScrollView showsVerticalScrollIndicator={false}>
@@ -62,7 +62,7 @@ const NewPasswordScreen = ({ navigation }) => {
                     onChangeText={(text) => updateState({ confirmPassword: text })}
                     placeholder={tr('confirmPwd')}
                     style={{ ...Fonts.blackColor14Regular, flex: 1, marginLeft: isRtl ? Sizes.fixPadding : 0.0 }}
-                    selectionColor={Colors.primaryColor}
+                    selectionColor={Colors.lightPrimaryColor}
                     placeholderTextColor={'#8D8D8D'}
                     secureTextEntry={!showConfirmPassword}
                 />
@@ -84,7 +84,7 @@ const NewPasswordScreen = ({ navigation }) => {
                     onChangeText={(text) => updateState({ password: text })}
                     placeholder={tr('newPwd')}
                     style={{ ...Fonts.blackColor14Regular, flex: 1, marginLeft: isRtl ? Sizes.fixPadding : 0.0 }}
-                    selectionColor={Colors.primaryColor}
+                    selectionColor={Colors.lightPrimaryColor}
                     placeholderTextColor={'#8D8D8D'}
                     secureTextEntry={!showPassword}
                 />
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
     },
     buttonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: Sizes.fixPadding,

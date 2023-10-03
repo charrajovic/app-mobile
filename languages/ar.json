@@ -23,7 +23,7 @@
         "header": "اشتراك",
         "name": "الاسم الكامل",
         "email": "عنوان الايميل",
-        "phone": "رقم الهاتف",
+        "phone": "النسب",
         "password": "كلمة المرور",
         "signup": "اشتراك",
         "connect": "أو تواصل مع",
@@ -70,17 +70,20 @@
         "wait": "أرجو الإنتظار"
     },
     "bottomTabsScreen": {
-        "home": "مسكن",
-        "workout": "اكتشف - حل",
+        "home": "الصفحة الرئيسية",
+        "workout": "التمارين",
         "insight": "تبصر",
-        "diet": "حمية",
+        "diet": "الحمية",
         "profile": "الملف الشخصي",
         "exitText": "اضغط على رجوع مرة أخرى للخروج"
     },
     "homeScreen": {
         "userWelcome": "صباح الخير",
-        "joinNow": "نضم الان",
+        "welc": "مرحبا",
+        "joinNow": "للتواصل",
+        "object": "هذه هي\nالصفحة الرئيسية\nللتدريب الشخصي الخاص بك",
         "premium1": "بدء",
+        "easy": "سهل الاستخدام",
         "premium3": "/شهر",
         "today": "اليوم",
         "sessionStart": "تبدأ الجلسة القادمة في",
@@ -152,7 +155,7 @@
         "backToHome": "العودة إلى الصفحة الرئيسية"
     },
     "workoutScreen": {
-        "header": "اكتشف - حل",
+        "header": "التمارين",
         "todayVideo": "فيديو تجريب اليوم",
         "workoutCategoryTitle": "فئات التمرين",
         "workoutTitle": "اكتشف - حل",
@@ -169,7 +172,9 @@
         "skip": "يتخطى"
     },
     "videosScreen": {
-        "header": "تدريب كامل للجسم"
+        "header": "تدريب كامل للجسم",
+        "tody": "اليوم لديك",
+        "workout": "تمارين"
     },
     "userProgramScreen": {
         "calories": "سعرات حراريه",
@@ -256,6 +261,7 @@
     "mealCategoryVideoScreen": {
         "protein": "بروتين",
         "fat": "سمين",
+        "description": "التفاصيل",
         "calories": "سعرات حراريه",
         "ingrediants": "مكونات",
         "recipe": "وصفة",
@@ -353,11 +359,15 @@
     },
     "languagesScreen": {
         "header": "اللغات",
-        "english": "English",
+        "english": "اللغة الإنجليزية",
         "hindi": "हिन्दी",
-        "indonesian": "Indonesian",
+        "french": "اللغة الفرنسية",
+        "indonesian": "اللغة الفرنسية",
         "chienese": "中国人",
-        "arabic": "عربي"
+        "arabic": "عربي",
+        "signin":"التالي",
+        "next":"التالي",
+        "skip":"تخطي"
     },
     "calender": {
         "jan": "يناير",

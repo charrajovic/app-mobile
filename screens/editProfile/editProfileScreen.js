@@ -46,7 +46,7 @@ const EditProfileScreen = ({ navigation }) => {
         try {
           const storedValue = await AsyncStorage.getItem('token');
           if (storedValue) {
-            const response = await axios.get('https://xxtreme-fitness.com/api/auth/user', {
+            const response = await axios.get('https://api2v.xxtreme-fitness.com/api/auth/user', {
               headers: {
                 Authorization: `Bearer ${storedValue}`,
               },
@@ -76,7 +76,7 @@ const EditProfileScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {header()}
                 <ScrollView showsVerticalScrollIndicator={false}>
@@ -158,7 +158,7 @@ const EditProfileScreen = ({ navigation }) => {
                     value={fitnessGoal}
                     onChangeText={(text) => updateState({ fitnessGoal: text })}
                     style={styles.textFieldStyle}
-                    selectionColor={Colors.primaryColor}
+                    selectionColor={Colors.lightPrimaryColor}
                 />
             </View>
         )
@@ -174,7 +174,7 @@ const EditProfileScreen = ({ navigation }) => {
                     value={lastname}
                     onChangeText={(text) => updateState({ lastname: text })}
                     style={styles.textFieldStyle}
-                    selectionColor={Colors.primaryColor}
+                    selectionColor={Colors.lightPrimaryColor}
                     keyboardType="phone-pad"
                 />
             </View>
@@ -191,7 +191,7 @@ const EditProfileScreen = ({ navigation }) => {
                     value={email}
                     onChangeText={(text) => updateState({ email: text })}
                     style={styles.textFieldStyle}
-                    selectionColor={Colors.primaryColor}
+                    selectionColor={Colors.lightPrimaryColor}
                     keyboardType="email-address"
                 />
             </View>
@@ -208,7 +208,7 @@ const EditProfileScreen = ({ navigation }) => {
                     value={name}
                     onChangeText={(text) => updateState({ name: text })}
                     style={styles.textFieldStyle}
-                    selectionColor={Colors.primaryColor}
+                    selectionColor={Colors.lightPrimaryColor}
                 />
             </View>
         )
@@ -253,7 +253,7 @@ export default EditProfileScreen;
 
 const styles = StyleSheet.create({
     addIconWrapStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         width: 22.0,
@@ -279,7 +279,7 @@ const styles = StyleSheet.create({
         paddingHorizontal: Sizes.fixPadding,
     },
     buttonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: Sizes.fixPadding,

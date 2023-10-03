@@ -30,7 +30,7 @@ const SuccessPaymentScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, justifyContent: 'space-between' }}>
                 {welcomeText()}
                 <ScrollView contentContainerStyle={{ flexGrow: 1, paddingBottom: Sizes.fixPadding, justifyContent: 'center' }}>
@@ -132,7 +132,7 @@ export default SuccessPaymentScreen;
 
 const styles = StyleSheet.create({
     buttonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: Sizes.fixPadding,
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     },
     scheduleAndSubscriptionDividerStyle: {
         top: -1.0,
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         width: 10.0,
         height: '102%'
     }

@@ -80,6 +80,9 @@
     "homeScreen": {
         "userWelcome": "Good morning",
         "joinNow": "Whatsapp contact",
+        "object": "This Is Your\nHome Page\nPersonal Tranning",
+        "welc": "Welcome",
+        "easy": "Easy to use",
         "premium1": "Starting",
         "premium3": "/month",
         "today": "Today",
@@ -169,7 +172,9 @@
         "skip": "skip"
     },
     "videosScreen": {
-        "header": "Full body tranning"
+        "header": "Full body tranning",
+        "tody": "Today you have",
+        "workout": "workout"
     },
     "userProgramScreen": {
         "calories": "Calories",
@@ -240,6 +245,7 @@
     "mealCategoryVideoScreen": {
         "protein": "Protein",
         "fat": "Fat",
+        "description": "Description",
         "calories": "Calories",
         "ingrediants": "Ingrediants",
         "recipe": "Recipe",
@@ -341,7 +347,10 @@
         "hindi": "Hindi",
         "indonesian": "Indonesian",
         "chienese": "Chienese",
-        "arabic": "Arabic"
+        "arabic": "Arabic",
+        "signin":"Sign In",
+        "next":"Next",
+        "skip":"Skip"
     },
     "calender": {
         "jan": "Jan",

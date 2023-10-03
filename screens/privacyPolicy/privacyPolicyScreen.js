@@ -27,7 +27,7 @@ const PrivacyPolicyScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {header()}
                 <ScrollView showsVerticalScrollIndicator={false}>
@@ -49,7 +49,7 @@ const PrivacyPolicyScreen = ({ navigation }) => {
                     <Switch
                         value={theme}
                         onValueChange={() => updateState({ theme: !theme })}
-                        color={Colors.primaryColor}
+                        color={Colors.lightPrimaryColor}
                         style={{ transform: [{ scaleX: .9 }, { scaleY: .9 }] }}
                     />
                 </View>
@@ -70,7 +70,7 @@ const PrivacyPolicyScreen = ({ navigation }) => {
                     <Switch
                         value={autoUpdate}
                         onValueChange={() => updateState({ autoUpdate: !autoUpdate })}
-                        color={Colors.primaryColor}
+                        color={Colors.lightPrimaryColor}
                         style={{ transform: [{ scaleX: .9 }, { scaleY: .9 }] }}
                     />
                 </View>
@@ -90,7 +90,7 @@ const PrivacyPolicyScreen = ({ navigation }) => {
                 <Switch
                     value={notification}
                     onValueChange={() => updateState({ notification: !notification })}
-                    color={Colors.primaryColor}
+                    color={Colors.lightPrimaryColor}
                     style={{ transform: [{ scaleX: .9 }, { scaleY: .9 }], }}
                 />
             </View>

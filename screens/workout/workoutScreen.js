@@ -21,7 +21,7 @@ const WorkoutScreen = ({ navigation }) => {
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: Colors.whiteColor }}>
-            <StatusBar translucent={false} backgroundColor={Colors.primaryColor} />
+            <StatusBar translucent={false} backgroundColor={Colors.lightPrimaryColor} />
             <View style={{ flex: 1, }}>
                 {header()}
                 <ScrollView showsVerticalScrollIndicator={false}>
@@ -38,10 +38,10 @@ const WorkoutScreen = ({ navigation }) => {
         return (
             <View>
                 <Text style={{ marginHorizontal: Sizes.fixPadding * 2.0, ...Fonts.blackColor16SemiBold }}>
-                    Exercices
+                {tr('header')}
                 </Text>
                 <View>
-                    {workoutsShort({ icon: require('../../assets/images/icons/workout.png'), title: "Exercices", onPress: () => { navigation.push('Videos') } })}
+                    {workoutsShort({ icon: require('../../assets/images/icons/workout.png'), title: tr('header'), onPress: () => { navigation.push('Videos') } })}
                     {workoutsShort({ icon: require('../../assets/images/icons/trainer.png'), title: tr('trainer'), onPress: () => { navigation.push('Trainers') } })}
                 </View>
             </View>
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     currencyWrapStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         width: 18.0,
         height: 18.0,
         borderRadius: 9.0,
@@ -127,7 +127,7 @@ const styles = StyleSheet.create({
         right: 5.0,
     },
     buttonStyle: {
-        backgroundColor: Colors.primaryColor,
+        backgroundColor: Colors.lightPrimaryColor,
         alignItems: 'center',
         justifyContent: 'center',
         borderRadius: Sizes.fixPadding,
